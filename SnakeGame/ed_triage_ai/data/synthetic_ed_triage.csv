@@ -1,0 +1,801 @@
+age,sex,heart_rate,systolic_bp,diastolic_bp,respiratory_rate,oxygen_saturation,temperature,pain_score,chief_complaint,triage_level,data_source
+23.0,Male,86.3,117.5,61.6,14.7,98.8,34.8,6.0,mild allergic reaction,4,synthetic_fallback
+0.0,Female,82.0,120.4,83.2,16.2,99.9,36.9,7.0,medication refill request,5,synthetic_fallback
+41.0,Female,113.9,118.2,71.3,13.9,93.6,39.3,6.0,ankle sprain from minor fall,4,synthetic_fallback
+64.0,Male,65.0,129.9,77.7,19.0,97.7,36.4,5.0,abdominal pain with vomiting,4,synthetic_fallback
+42.0,Male,68.7,150.0,97.4,18.6,94.9,36.9,4.0,ankle sprain from minor fall,4,synthetic_fallback
+79.0,Male,82.0,105.3,54.1,15.7,96.7,35.5,3.0,moderate asthma exacerbation,2,synthetic_fallback
+72.0,Male,54.3,140.1,80.2,17.9,100.0,36.6,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+69.0,Male,84.9,144.9,86.6,21.5,95.8,37.6,5.0,mild allergic reaction,4,synthetic_fallback
+60.0,Female,96.3,117.6,73.4,17.0,99.5,38.6,7.0,sore throat and low fever,4,synthetic_fallback
+64.0,Male,73.7,148.7,73.4,14.9,95.3,35.8,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+31.0,Male,78.7,127.9,81.6,20.9,95.4,36.5,6.0,moderate asthma exacerbation,4,synthetic_fallback
+52.0,Male,105.9,110.2,66.9,16.1,89.4,40.5,6.0,syncope and dizziness,2,synthetic_fallback
+63.0,Female,101.6,114.5,79.5,24.5,88.4,39.5,6.0,high fever with confusion,2,synthetic_fallback
+78.0,Female,97.2,102.3,62.8,19.8,99.6,37.8,5.0,moderate asthma exacerbation,3,synthetic_fallback
+59.0,Male,89.6,144.4,93.7,18.5,98.6,36.7,0.0,small laceration without bleeding,4,synthetic_fallback
+32.0,Male,97.1,124.3,71.5,27.0,100.0,37.5,4.0,fever and cough for 3 days,3,synthetic_fallback
+28.0,Male,108.7,116.3,72.0,14.7,96.8,37.2,3.0,small laceration without bleeding,4,synthetic_fallback
+41.0,Male,74.7,127.0,87.5,19.9,91.0,35.4,5.0,moderate asthma exacerbation,3,synthetic_fallback
+74.0,Female,77.6,109.5,64.5,19.0,96.2,37.4,6.0,mild allergic reaction,4,synthetic_fallback
+17.0,Female,68.2,153.2,73.4,17.5,97.3,38.1,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+62.0,Male,100.9,147.6,101.1,12.3,89.9,37.0,7.0,mild allergic reaction,4,synthetic_fallback
+30.0,Male,64.1,136.6,84.6,19.4,87.8,34.4,2.0,headache and nausea,3,synthetic_fallback
+38.0,Female,95.2,103.1,71.3,15.9,95.2,35.9,2.0,administrative medical clearance,5,synthetic_fallback
+49.0,Female,92.3,84.6,40.7,15.2,97.4,37.3,8.0,moderate asthma exacerbation,3,synthetic_fallback
+31.0,Female,59.9,157.5,97.2,14.8,100.0,37.9,1.0,administrative medical clearance,5,synthetic_fallback
+32.0,Male,71.4,114.8,68.8,15.6,93.0,36.7,5.0,small laceration without bleeding,4,synthetic_fallback
+73.0,Female,112.8,118.5,53.2,25.9,90.6,38.2,5.0,syncope and dizziness,2,synthetic_fallback
+62.0,Male,92.3,125.6,82.6,18.1,96.6,36.9,2.0,small laceration without bleeding,4,synthetic_fallback
+35.0,Female,83.7,117.3,64.2,19.5,100.0,36.2,5.0,headache and nausea,3,synthetic_fallback
+33.0,Male,101.7,101.9,57.5,26.5,100.0,39.2,5.0,moderate asthma exacerbation,4,synthetic_fallback
+62.0,Female,62.3,109.1,60.5,18.3,96.6,37.2,6.0,small laceration without bleeding,4,synthetic_fallback
+35.0,Male,106.2,129.8,76.8,18.1,94.5,37.5,4.0,small laceration without bleeding,4,synthetic_fallback
+67.0,Female,83.4,142.4,91.7,11.9,99.9,37.3,6.0,medication refill request,5,synthetic_fallback
+38.0,Female,92.7,113.4,69.5,23.4,90.0,37.4,5.0,fever and cough for 3 days,3,synthetic_fallback
+53.0,Male,72.2,132.7,72.5,19.3,98.7,38.1,3.0,sore throat and low fever,4,synthetic_fallback
+57.0,Male,100.8,139.5,88.2,18.5,93.5,36.2,5.0,chronic back pain stable,5,synthetic_fallback
+32.0,Female,91.4,132.6,74.6,19.3,91.3,35.8,5.0,headache and nausea,3,synthetic_fallback
+41.0,Female,83.8,125.3,76.3,18.5,91.3,38.8,7.0,headache and nausea,3,synthetic_fallback
+26.0,Male,134.7,74.9,73.4,34.3,88.5,39.4,8.0,severe shortness of breath with chest pain,1,synthetic_fallback
+60.0,Male,130.5,91.4,45.7,31.9,89.9,38.4,5.0,shortness of breath and tachycardia,1,synthetic_fallback
+27.0,Female,90.0,118.5,73.4,15.1,89.9,39.0,8.0,high fever with confusion,2,synthetic_fallback
+56.0,Male,73.1,127.4,71.9,13.4,96.1,39.1,4.0,mild allergic reaction,4,synthetic_fallback
+55.0,Female,110.0,141.6,91.1,19.2,97.6,38.0,4.0,headache and nausea,3,synthetic_fallback
+53.0,Male,105.1,147.5,90.1,19.5,98.1,37.0,1.0,small laceration without bleeding,4,synthetic_fallback
+57.0,Male,104.2,120.7,71.8,14.4,97.0,36.1,7.0,fever and cough for 3 days,3,synthetic_fallback
+66.0,Male,93.6,98.5,68.2,27.4,94.9,37.5,5.0,syncope and dizziness,3,synthetic_fallback
+64.0,Female,139.4,109.0,75.2,33.8,87.3,37.5,7.0,shortness of breath and tachycardia,2,synthetic_fallback
+26.0,Male,95.6,118.5,82.2,14.6,98.3,37.6,5.0,sore throat and low fever,4,synthetic_fallback
+49.0,Male,71.9,120.2,70.5,14.3,94.8,37.3,2.0,medication refill request,5,synthetic_fallback
+44.0,Female,145.6,69.6,30.0,18.5,83.1,39.5,8.0,altered mental status and hypotension,1,synthetic_fallback
+49.0,Male,101.1,109.7,63.4,16.3,93.1,36.3,8.0,moderate asthma exacerbation,3,synthetic_fallback
+48.0,Male,60.1,139.9,92.3,18.5,100.0,35.3,5.0,medication refill request,5,synthetic_fallback
+40.0,Male,74.8,130.4,73.4,13.7,95.9,37.4,4.0,small laceration without bleeding,4,synthetic_fallback
+36.0,Male,74.0,131.6,83.1,18.2,100.0,38.0,0.0,administrative medical clearance,5,synthetic_fallback
+22.0,Female,114.2,118.5,46.1,21.3,97.5,36.6,3.0,syncope and dizziness,2,synthetic_fallback
+47.0,Male,76.5,95.8,64.4,23.1,94.8,38.5,4.0,moderate asthma exacerbation,3,synthetic_fallback
+13.0,Male,88.2,136.4,76.3,18.5,92.5,34.7,2.0,medication refill request,5,synthetic_fallback
+59.0,Female,101.3,136.0,91.2,13.8,96.3,35.3,2.0,administrative medical clearance,5,synthetic_fallback
+67.0,Female,93.1,98.8,66.3,20.4,89.4,36.5,4.0,abdominal pain with vomiting,3,synthetic_fallback
+68.0,Female,93.4,116.9,75.9,23.6,94.6,38.0,4.0,abdominal pain with vomiting,3,synthetic_fallback
+79.0,Male,88.9,139.2,86.7,25.5,96.7,37.5,7.0,abdominal pain with vomiting,3,synthetic_fallback
+28.0,Female,79.1,130.0,80.4,17.7,95.9,36.4,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+31.0,Female,79.1,108.5,73.6,12.5,95.9,36.0,3.0,chest pain radiating to left arm,3,synthetic_fallback
+75.0,Male,74.1,120.7,71.3,15.7,98.9,36.6,4.0,moderate asthma exacerbation,3,synthetic_fallback
+34.0,Male,100.3,106.8,62.5,14.0,100.0,37.4,3.0,moderate asthma exacerbation,3,synthetic_fallback
+44.0,Female,119.7,76.8,43.7,33.5,85.2,38.2,5.0,possible stroke with slurred speech,1,synthetic_fallback
+26.0,Female,97.4,120.1,65.6,23.7,92.6,37.7,5.0,high fever with confusion,2,synthetic_fallback
+64.0,Female,83.3,118.3,73.4,17.9,95.9,38.5,0.0,headache and nausea,3,synthetic_fallback
+47.0,Male,90.6,114.9,64.5,16.0,95.9,35.6,1.0,small laceration without bleeding,4,synthetic_fallback
+56.0,Female,83.2,135.8,89.4,11.2,95.7,38.5,2.0,sore throat and low fever,4,synthetic_fallback
+86.0,Male,74.0,126.0,72.2,19.3,97.1,37.9,3.0,fever and cough for 3 days,3,synthetic_fallback
+29.0,Female,85.0,85.9,49.3,30.4,92.4,38.6,5.0,high fever with confusion,2,synthetic_fallback
+36.0,Female,91.0,131.4,88.4,20.1,95.9,37.0,7.0,headache and nausea,3,synthetic_fallback
+57.0,Female,77.9,118.2,74.2,17.6,100.0,38.4,6.0,fever and cough for 3 days,3,synthetic_fallback
+27.0,Female,83.9,155.0,105.5,13.6,99.4,36.7,3.0,mild rash no respiratory symptoms,5,synthetic_fallback
+50.0,Female,101.1,121.1,77.8,18.5,92.7,37.3,8.0,abdominal pain with vomiting,3,synthetic_fallback
+75.0,Female,79.2,134.3,73.0,13.2,99.3,37.3,5.0,fever and cough for 3 days,3,synthetic_fallback
+64.0,Female,95.0,124.7,80.5,19.3,92.0,37.7,3.0,headache and nausea,3,synthetic_fallback
+41.0,Female,131.3,91.3,54.0,25.8,85.6,38.4,8.0,active hemorrhage after trauma,1,synthetic_fallback
+97.0,Female,67.7,118.5,74.7,12.9,95.9,39.0,4.0,abdominal pain with vomiting,3,synthetic_fallback
+79.0,Male,107.0,90.1,45.9,23.0,87.3,38.1,6.0,shortness of breath and tachycardia,2,synthetic_fallback
+23.0,Male,73.0,104.6,54.9,13.2,97.4,40.5,5.0,moderate asthma exacerbation,3,synthetic_fallback
+84.0,Male,70.6,143.8,96.6,11.5,95.5,37.0,5.0,medication refill request,5,synthetic_fallback
+66.0,Male,105.1,125.1,79.8,27.3,96.7,37.3,5.0,small laceration without bleeding,4,synthetic_fallback
+9.0,Female,128.4,79.2,48.3,27.6,77.5,37.6,10.0,syncope and dizziness,2,synthetic_fallback
+42.0,Female,69.7,142.6,86.9,14.8,90.2,38.8,2.0,ankle sprain from minor fall,4,synthetic_fallback
+34.0,Female,63.6,130.2,82.3,22.5,97.2,37.9,6.0,sore throat and low fever,4,synthetic_fallback
+32.0,Female,105.5,118.6,82.4,14.3,93.8,37.5,5.0,fever and cough for 3 days,3,synthetic_fallback
+44.0,Male,113.9,95.2,55.6,23.7,98.3,38.1,6.0,syncope and dizziness,2,synthetic_fallback
+22.0,Female,96.3,115.5,70.1,12.5,93.5,37.7,5.0,abdominal pain with vomiting,3,synthetic_fallback
+94.0,Male,83.6,136.3,88.2,17.6,91.2,35.7,1.0,small laceration without bleeding,4,synthetic_fallback
+33.0,Other,91.9,113.3,80.0,19.9,99.2,37.9,3.0,moderate asthma exacerbation,3,synthetic_fallback
+45.0,Male,86.3,114.8,74.9,19.8,100.0,36.5,5.0,headache and nausea,3,synthetic_fallback
+19.0,Male,77.2,149.8,85.4,17.4,95.4,36.0,0.0,ankle sprain from minor fall,4,synthetic_fallback
+61.0,Female,105.6,116.7,75.7,9.7,95.9,36.8,4.0,ankle sprain from minor fall,4,synthetic_fallback
+55.0,Male,79.4,119.4,79.9,19.4,98.9,38.0,2.0,sore throat and low fever,4,synthetic_fallback
+46.0,Female,64.4,150.3,84.1,10.9,94.1,37.5,3.0,sore throat and low fever,4,synthetic_fallback
+41.0,Male,104.6,126.6,71.1,18.1,91.2,37.3,8.0,mild allergic reaction,4,synthetic_fallback
+12.0,Male,66.4,142.3,88.4,14.9,95.9,37.1,7.0,ankle sprain from minor fall,4,synthetic_fallback
+24.0,Male,103.8,115.6,74.1,24.6,94.2,35.7,9.0,abdominal pain with vomiting,3,synthetic_fallback
+87.0,Female,93.5,116.7,77.1,13.9,98.3,37.3,7.0,small laceration without bleeding,4,synthetic_fallback
+57.0,Male,65.0,103.9,57.9,18.5,96.2,35.5,6.0,sore throat and low fever,4,synthetic_fallback
+41.0,Female,105.3,108.7,70.6,37.0,92.5,36.4,7.0,shortness of breath and tachycardia,2,synthetic_fallback
+32.0,Male,93.8,131.8,82.8,16.7,95.3,35.3,5.0,sore throat and low fever,3,synthetic_fallback
+97.0,Male,85.5,121.5,72.2,22.7,92.5,37.7,4.0,moderate asthma exacerbation,3,synthetic_fallback
+29.0,Male,127.0,56.3,30.0,39.6,85.2,39.6,7.0,possible stroke with slurred speech,1,synthetic_fallback
+34.0,Male,79.5,125.2,89.5,16.8,99.2,38.6,5.0,sore throat and low fever,4,synthetic_fallback
+89.0,Female,84.9,145.9,86.2,14.4,99.1,37.3,1.0,medication refill request,5,synthetic_fallback
+21.0,Male,112.3,75.5,45.2,28.4,93.1,41.2,6.0,syncope and dizziness,2,synthetic_fallback
+50.0,Male,88.9,121.2,79.7,14.5,96.2,37.6,2.0,small laceration without bleeding,4,synthetic_fallback
+88.0,Male,83.2,127.0,85.4,23.7,98.6,37.3,4.0,mild allergic reaction,4,synthetic_fallback
+54.0,Female,87.2,119.5,69.4,17.1,88.0,36.8,4.0,abdominal pain with vomiting,3,synthetic_fallback
+55.0,Male,127.8,90.3,62.1,24.2,91.7,38.9,5.0,syncope and dizziness,2,synthetic_fallback
+48.0,Female,86.1,139.4,88.4,21.7,95.7,37.0,4.0,headache and nausea,3,synthetic_fallback
+37.0,Male,111.8,98.0,59.7,21.2,91.9,37.3,7.0,abdominal pain with vomiting,3,synthetic_fallback
+54.0,Female,111.9,124.3,83.9,14.8,97.3,35.4,5.0,moderate asthma exacerbation,3,synthetic_fallback
+40.0,Male,86.6,120.0,71.0,25.1,97.1,34.9,7.0,fever and cough for 3 days,3,synthetic_fallback
+33.0,Female,109.6,128.5,78.5,20.8,93.3,37.7,4.0,fever and cough for 3 days,3,synthetic_fallback
+58.0,Male,95.2,132.3,80.1,17.5,98.7,38.2,6.0,mild allergic reaction,3,synthetic_fallback
+56.0,Male,79.5,130.6,78.8,17.6,89.3,36.2,4.0,ankle sprain from minor fall,4,synthetic_fallback
+21.0,Female,99.7,113.2,73.6,22.7,89.4,36.8,1.0,small laceration without bleeding,3,synthetic_fallback
+0.0,Male,116.2,79.6,56.7,18.8,89.5,39.4,7.0,chest pain radiating to left arm,2,synthetic_fallback
+0.0,Female,85.2,98.2,59.6,24.1,88.5,38.6,5.0,headache and nausea,3,synthetic_fallback
+53.0,Male,69.6,147.8,95.2,18.1,93.4,36.2,2.0,medication refill request,5,synthetic_fallback
+58.0,Male,74.6,154.6,92.7,20.5,95.1,37.6,5.0,small laceration without bleeding,4,synthetic_fallback
+7.0,Male,96.4,118.7,73.4,28.4,99.7,38.4,3.0,fever and cough for 3 days,3,synthetic_fallback
+67.0,Male,97.9,116.5,76.3,21.0,100.0,36.4,5.0,fever and cough for 3 days,3,synthetic_fallback
+50.0,Male,70.8,95.6,60.9,22.1,94.7,37.1,3.0,sore throat and low fever,4,synthetic_fallback
+69.0,Female,89.8,76.6,54.5,19.5,94.4,38.5,1.0,moderate asthma exacerbation,3,synthetic_fallback
+65.0,Male,73.5,118.5,64.0,16.7,99.7,37.7,3.0,mild rash no respiratory symptoms,5,synthetic_fallback
+32.0,Male,119.9,116.9,73.6,20.8,87.4,37.0,7.0,moderate asthma exacerbation,3,synthetic_fallback
+28.0,Female,88.7,115.0,72.5,17.4,100.0,37.2,5.0,medication refill request,5,synthetic_fallback
+39.0,Male,98.6,125.4,81.1,21.5,91.2,36.0,4.0,headache and nausea,3,synthetic_fallback
+85.0,Female,94.2,137.5,74.0,16.3,95.9,36.4,5.0,sore throat and low fever,4,synthetic_fallback
+44.0,Male,76.0,112.7,59.3,18.1,98.7,37.5,7.0,mild allergic reaction,4,synthetic_fallback
+37.0,Female,70.6,96.2,60.9,19.1,92.1,37.3,3.0,moderate asthma exacerbation,3,synthetic_fallback
+6.0,Female,115.7,96.6,58.9,13.3,90.2,39.4,6.0,moderate asthma exacerbation,2,synthetic_fallback
+51.0,Female,114.9,92.9,66.1,17.5,93.5,37.2,6.0,moderate asthma exacerbation,3,synthetic_fallback
+76.0,Male,79.6,138.3,95.7,20.3,96.5,36.8,7.0,sore throat and low fever,5,synthetic_fallback
+57.0,Female,92.8,144.8,85.8,15.9,97.1,37.2,3.0,administrative medical clearance,5,synthetic_fallback
+18.0,Male,86.7,125.3,87.9,18.7,97.6,37.2,3.0,ankle sprain from minor fall,4,synthetic_fallback
+61.0,Male,77.4,112.9,73.2,18.5,93.5,36.8,5.0,moderate asthma exacerbation,2,synthetic_fallback
+55.0,Female,110.7,101.5,56.8,17.2,99.8,37.0,5.0,moderate asthma exacerbation,4,synthetic_fallback
+43.0,Male,77.6,118.9,84.4,18.0,96.1,36.3,3.0,medication refill request,5,synthetic_fallback
+57.0,Male,85.0,107.5,73.4,18.5,97.2,38.3,4.0,small laceration without bleeding,4,synthetic_fallback
+56.0,Female,65.7,111.8,59.7,14.1,96.4,36.4,5.0,ankle sprain from minor fall,4,synthetic_fallback
+29.0,Female,83.1,132.8,75.9,16.9,95.6,35.6,3.0,mild allergic reaction,4,synthetic_fallback
+81.0,Female,96.2,97.6,43.9,19.7,100.0,35.2,7.0,small laceration without bleeding,4,synthetic_fallback
+57.0,Female,78.2,113.2,73.2,15.0,96.8,36.1,8.0,ankle sprain from minor fall,4,synthetic_fallback
+74.0,Other,92.8,138.3,80.1,22.6,90.9,37.3,5.0,fever and cough for 3 days,3,synthetic_fallback
+41.0,Male,75.4,148.7,93.8,17.2,100.0,36.4,7.0,sore throat and low fever,4,synthetic_fallback
+54.0,Male,70.1,142.9,88.4,13.2,93.5,37.5,5.0,medication refill request,5,synthetic_fallback
+89.0,Female,119.4,91.1,51.7,22.6,95.9,38.8,3.0,fever and cough for 3 days,3,synthetic_fallback
+13.0,Other,90.6,124.7,71.3,20.2,93.8,35.3,5.0,small laceration without bleeding,4,synthetic_fallback
+65.0,Female,73.4,144.1,93.4,16.4,98.8,37.5,3.0,medication refill request,5,synthetic_fallback
+44.0,Male,135.3,100.1,63.2,21.9,93.1,36.8,10.0,high fever with confusion,2,synthetic_fallback
+64.0,Female,78.6,93.2,44.1,11.4,94.4,37.3,4.0,small laceration without bleeding,4,synthetic_fallback
+15.0,Female,108.9,121.2,65.3,14.1,93.5,38.5,6.0,mild allergic reaction,3,synthetic_fallback
+65.0,Female,100.9,123.0,75.0,23.8,94.2,37.4,2.0,moderate asthma exacerbation,3,synthetic_fallback
+36.0,Female,118.5,91.5,62.1,33.9,88.5,38.0,9.0,high fever with confusion,2,synthetic_fallback
+38.0,Male,57.0,138.8,77.6,12.6,98.8,37.6,0.0,mild rash no respiratory symptoms,5,synthetic_fallback
+51.0,Female,81.8,123.5,74.3,10.9,97.3,36.7,1.0,ankle sprain from minor fall,4,synthetic_fallback
+74.0,Female,93.5,86.8,55.3,18.7,95.0,37.8,7.0,abdominal pain with vomiting,3,synthetic_fallback
+26.0,Male,90.7,111.4,66.4,14.1,100.0,38.2,4.0,mild allergic reaction,4,synthetic_fallback
+29.0,Female,90.6,102.8,71.4,27.2,82.0,37.4,5.0,severe shortness of breath with chest pain,1,synthetic_fallback
+68.0,Female,65.8,114.8,67.3,16.8,98.5,37.6,6.0,abdominal pain with vomiting,4,synthetic_fallback
+76.0,Male,122.8,117.3,67.9,10.7,94.6,40.5,8.0,fever and cough for 3 days,3,synthetic_fallback
+58.0,Male,71.0,133.7,85.7,14.6,92.4,36.8,7.0,ankle sprain from minor fall,4,synthetic_fallback
+54.0,Female,84.5,139.5,87.9,9.2,95.9,38.1,1.0,small laceration without bleeding,4,synthetic_fallback
+67.0,Other,93.8,146.1,86.8,13.8,97.2,38.1,2.0,administrative medical clearance,5,synthetic_fallback
+78.0,Male,125.8,105.8,74.5,28.2,82.9,37.9,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+20.0,Male,80.7,109.8,62.2,11.5,95.0,36.1,5.0,small laceration without bleeding,4,synthetic_fallback
+81.0,Male,95.3,102.6,62.6,17.0,92.0,38.1,5.0,abdominal pain with vomiting,3,synthetic_fallback
+68.0,Male,91.3,102.4,58.9,14.1,94.6,38.4,3.0,medication refill request,5,synthetic_fallback
+64.0,Male,65.4,143.4,93.4,11.8,95.9,36.4,8.0,mild allergic reaction,4,synthetic_fallback
+64.0,Male,63.7,110.5,60.4,18.3,95.9,39.0,8.0,moderate asthma exacerbation,3,synthetic_fallback
+50.0,Male,107.6,126.0,89.1,8.1,98.0,38.9,8.0,sore throat and low fever,4,synthetic_fallback
+7.0,Male,96.8,136.2,73.9,16.7,87.2,38.5,4.0,abdominal pain with vomiting,2,synthetic_fallback
+36.0,Female,81.5,138.5,80.5,22.4,94.9,37.5,2.0,small laceration without bleeding,4,synthetic_fallback
+23.0,Male,109.3,89.4,56.9,17.8,88.7,37.9,7.0,possible stroke with slurred speech,2,synthetic_fallback
+78.0,Male,86.0,118.5,74.5,14.2,92.5,35.6,1.0,mild allergic reaction,4,synthetic_fallback
+36.0,Male,79.5,105.0,62.8,14.4,97.2,37.8,0.0,chronic back pain stable,5,synthetic_fallback
+44.0,Female,69.1,150.5,90.5,21.1,98.6,36.3,4.0,mild allergic reaction,4,synthetic_fallback
+56.0,Female,65.0,116.7,61.4,16.1,94.7,37.5,3.0,medication refill request,5,synthetic_fallback
+56.0,Male,81.1,123.5,80.3,22.2,100.0,38.3,3.0,mild allergic reaction,4,synthetic_fallback
+57.0,Female,87.8,114.2,83.0,17.1,92.5,38.4,2.0,mild allergic reaction,4,synthetic_fallback
+56.0,Male,84.4,124.5,78.7,16.6,94.9,35.8,5.0,chronic back pain stable,5,synthetic_fallback
+43.0,Female,61.1,156.1,94.8,18.4,97.7,36.7,0.0,chronic back pain stable,5,synthetic_fallback
+39.0,Male,69.2,99.7,65.1,25.0,95.2,37.0,3.0,sore throat and low fever,4,synthetic_fallback
+17.0,Female,59.5,124.5,78.3,22.8,94.8,36.9,5.0,chronic back pain stable,4,synthetic_fallback
+45.0,Female,69.6,150.6,84.6,15.5,93.9,35.4,3.0,mild rash no respiratory symptoms,4,synthetic_fallback
+35.0,Female,150.5,113.7,69.2,21.1,85.3,38.6,2.0,chest pain radiating to left arm,2,synthetic_fallback
+44.0,Female,85.4,85.8,47.2,15.9,95.9,38.0,6.0,headache and nausea,3,synthetic_fallback
+41.0,Female,101.9,99.5,58.0,15.6,98.2,38.2,3.0,fever and cough for 3 days,3,synthetic_fallback
+45.0,Male,77.5,131.8,84.0,6.0,94.3,38.1,6.0,ankle sprain from minor fall,4,synthetic_fallback
+29.0,Male,126.2,59.5,35.8,23.8,90.5,37.2,9.0,chest pain radiating to left arm,2,synthetic_fallback
+45.0,Male,89.7,98.3,73.2,26.1,96.8,37.3,3.0,moderate asthma exacerbation,3,synthetic_fallback
+58.0,Female,51.9,119.4,73.9,18.6,98.2,35.7,7.0,administrative medical clearance,5,synthetic_fallback
+41.0,Male,87.2,125.5,76.1,18.0,93.4,37.0,9.0,abdominal pain with vomiting,3,synthetic_fallback
+54.0,Male,117.7,101.9,60.0,18.5,90.8,38.8,9.0,syncope and dizziness,2,synthetic_fallback
+46.0,Male,88.7,122.1,72.9,16.8,95.9,35.3,3.0,mild rash no respiratory symptoms,5,synthetic_fallback
+44.0,Female,83.3,125.4,77.9,14.1,100.0,37.0,3.0,sore throat and low fever,4,synthetic_fallback
+42.0,Male,110.4,102.0,60.6,18.5,94.7,37.1,3.0,headache and nausea,3,synthetic_fallback
+49.0,Female,102.6,118.6,69.6,18.7,98.7,38.7,3.0,sore throat and low fever,4,synthetic_fallback
+51.0,Female,82.5,134.2,73.4,13.7,95.1,37.1,0.0,administrative medical clearance,5,synthetic_fallback
+36.0,Male,64.7,118.3,65.1,15.3,100.0,35.3,3.0,administrative medical clearance,5,synthetic_fallback
+87.0,Male,113.1,119.0,86.2,34.4,92.1,37.3,6.0,shortness of breath and tachycardia,3,synthetic_fallback
+35.0,Male,58.3,99.5,60.5,14.8,94.8,36.9,2.0,administrative medical clearance,5,synthetic_fallback
+44.0,Female,104.3,129.3,80.5,19.3,96.6,37.6,5.0,ankle sprain from minor fall,4,synthetic_fallback
+0.0,Female,105.7,109.2,69.8,24.4,92.1,38.4,5.0,mild allergic reaction,3,synthetic_fallback
+55.0,Female,115.0,88.6,54.9,23.9,87.0,36.6,10.0,chest pain radiating to left arm,2,synthetic_fallback
+90.0,Male,117.6,118.5,76.2,18.5,92.4,39.5,7.0,high fever with confusion,2,synthetic_fallback
+67.0,Female,71.2,99.3,67.9,15.1,96.4,36.2,5.0,ankle sprain from minor fall,4,synthetic_fallback
+61.0,Male,96.1,118.9,67.9,21.4,89.8,36.0,4.0,moderate asthma exacerbation,3,synthetic_fallback
+55.0,Male,88.5,130.1,89.7,19.7,100.0,37.3,4.0,mild allergic reaction,4,synthetic_fallback
+70.0,Female,109.5,118.5,49.3,19.2,98.9,37.9,5.0,syncope and dizziness,2,synthetic_fallback
+25.0,Female,115.5,89.1,62.9,29.6,88.5,35.1,2.0,syncope and dizziness,2,synthetic_fallback
+47.0,Male,88.6,120.4,87.2,13.2,98.0,36.9,3.0,chronic back pain stable,5,synthetic_fallback
+57.0,Male,125.0,110.0,77.8,19.1,89.4,38.3,10.0,chest pain radiating to left arm,2,synthetic_fallback
+42.0,Female,103.7,118.5,57.3,15.5,91.8,38.9,9.0,syncope and dizziness,1,synthetic_fallback
+38.0,Female,108.3,110.9,65.6,25.0,94.9,37.7,5.0,fever and cough for 3 days,3,synthetic_fallback
+44.0,Male,67.5,143.2,85.9,23.5,97.0,37.0,2.0,chronic back pain stable,5,synthetic_fallback
+54.0,Male,67.8,96.2,60.2,24.2,96.3,37.5,2.0,headache and nausea,3,synthetic_fallback
+46.0,Female,101.3,130.7,75.1,18.5,97.3,39.8,5.0,fever and cough for 3 days,3,synthetic_fallback
+34.0,Male,109.4,122.7,78.6,23.7,97.9,37.1,2.0,fever and cough for 3 days,3,synthetic_fallback
+38.0,Female,124.7,90.3,55.0,25.7,98.0,36.6,7.0,high fever with confusion,2,synthetic_fallback
+27.0,Female,78.6,127.6,90.1,21.5,100.0,36.6,4.0,mild allergic reaction,4,synthetic_fallback
+63.0,Male,85.0,116.5,76.9,21.7,92.3,37.2,8.0,high fever with confusion,3,synthetic_fallback
+71.0,Male,95.5,106.1,73.4,11.8,96.9,36.8,9.0,abdominal pain with vomiting,3,synthetic_fallback
+47.0,Female,122.5,99.0,55.3,25.3,92.5,39.7,7.0,moderate asthma exacerbation,3,synthetic_fallback
+64.0,Male,75.0,125.0,87.4,20.2,93.4,38.9,2.0,syncope and dizziness,3,synthetic_fallback
+47.0,Male,80.0,130.7,91.7,25.0,95.5,38.8,4.0,ankle sprain from minor fall,4,synthetic_fallback
+72.0,Male,112.7,105.0,70.9,19.7,95.7,39.2,5.0,headache and nausea,3,synthetic_fallback
+40.0,Male,79.9,170.8,109.6,15.3,100.0,37.3,3.0,small laceration without bleeding,5,synthetic_fallback
+49.0,Female,72.0,119.1,68.5,16.7,99.2,36.4,5.0,medication refill request,5,synthetic_fallback
+66.0,Female,86.6,117.6,79.2,20.7,100.0,38.1,7.0,abdominal pain with vomiting,2,synthetic_fallback
+48.0,Male,105.6,101.7,69.6,24.4,90.8,38.0,3.0,active hemorrhage after trauma,2,synthetic_fallback
+53.0,Female,72.3,130.2,64.7,14.3,100.0,37.5,5.0,small laceration without bleeding,4,synthetic_fallback
+46.0,Female,82.9,95.0,57.9,11.7,100.0,36.3,2.0,sore throat and low fever,4,synthetic_fallback
+63.0,Male,106.5,95.0,56.0,26.1,87.0,38.6,10.0,shortness of breath and tachycardia,2,synthetic_fallback
+47.0,Female,76.3,109.9,61.4,14.5,95.9,36.5,2.0,medication refill request,5,synthetic_fallback
+41.0,Other,107.8,96.6,65.5,23.9,98.5,38.1,9.0,high fever with confusion,2,synthetic_fallback
+10.0,Female,72.4,123.0,79.0,16.7,99.4,36.6,0.0,small laceration without bleeding,5,synthetic_fallback
+24.0,Male,116.6,121.9,72.4,17.2,94.6,38.1,5.0,abdominal pain with vomiting,3,synthetic_fallback
+37.0,Female,71.1,174.2,117.0,16.7,96.7,37.3,1.0,medication refill request,5,synthetic_fallback
+47.0,Male,88.0,97.0,60.2,14.1,96.2,36.3,8.0,mild allergic reaction,4,synthetic_fallback
+47.0,Male,130.1,111.8,74.0,22.2,90.9,37.2,5.0,moderate asthma exacerbation,2,synthetic_fallback
+51.0,Male,79.3,110.6,71.4,16.4,95.4,36.1,8.0,small laceration without bleeding,4,synthetic_fallback
+50.0,Male,99.3,96.9,61.7,18.5,92.4,38.5,8.0,small laceration without bleeding,4,synthetic_fallback
+70.0,Male,109.8,127.3,82.7,18.5,98.7,36.2,2.0,sore throat and low fever,4,synthetic_fallback
+18.0,Female,122.1,128.8,79.3,20.8,96.0,37.7,3.0,abdominal pain with vomiting,3,synthetic_fallback
+86.0,Male,82.2,148.8,90.3,18.0,93.1,37.2,6.0,fever and cough for 3 days,3,synthetic_fallback
+51.0,Female,71.0,118.5,73.3,14.6,100.0,36.5,6.0,ankle sprain from minor fall,4,synthetic_fallback
+54.0,Male,121.5,102.4,60.6,17.1,91.3,37.9,2.0,moderate asthma exacerbation,3,synthetic_fallback
+66.0,Female,81.8,137.6,88.1,20.4,94.2,37.8,3.0,small laceration without bleeding,4,synthetic_fallback
+61.0,Female,62.3,150.5,91.2,22.5,98.7,36.2,8.0,sore throat and low fever,4,synthetic_fallback
+13.0,Other,101.6,124.6,73.4,17.8,100.0,36.2,2.0,mild allergic reaction,4,synthetic_fallback
+18.0,Male,91.0,115.0,58.7,19.8,93.3,36.8,9.0,headache and nausea,3,synthetic_fallback
+49.0,Female,98.6,116.3,79.8,14.9,99.2,37.1,4.0,headache and nausea,3,synthetic_fallback
+84.0,Male,81.0,153.3,94.4,27.8,93.6,35.9,2.0,mild allergic reaction,4,synthetic_fallback
+78.0,Male,92.9,85.4,55.3,17.5,78.3,38.0,7.0,active hemorrhage after trauma,1,synthetic_fallback
+61.0,Female,76.9,114.3,68.6,22.6,97.4,37.2,10.0,mild allergic reaction,3,synthetic_fallback
+56.0,Female,100.7,85.3,56.6,18.8,95.9,38.2,8.0,fever and cough for 3 days,3,synthetic_fallback
+21.0,Male,102.4,126.5,73.4,12.1,93.7,37.2,1.0,headache and nausea,4,synthetic_fallback
+78.0,Male,91.5,142.4,87.0,17.1,99.7,35.7,5.0,chronic back pain stable,5,synthetic_fallback
+27.0,Male,134.6,98.6,63.5,27.4,85.7,39.3,2.0,syncope and dizziness,2,synthetic_fallback
+78.0,Female,104.7,129.9,82.9,12.1,100.0,38.0,8.0,moderate asthma exacerbation,3,synthetic_fallback
+27.0,Female,85.1,131.3,84.4,13.5,95.9,38.6,0.0,administrative medical clearance,5,synthetic_fallback
+87.0,Male,68.7,134.6,73.4,11.1,95.1,36.9,3.0,ankle sprain from minor fall,5,synthetic_fallback
+43.0,Other,80.8,98.5,59.9,18.5,95.1,37.8,7.0,sore throat and low fever,4,synthetic_fallback
+50.0,Male,110.9,109.7,70.6,17.7,99.4,37.3,9.0,moderate asthma exacerbation,3,synthetic_fallback
+80.0,Male,93.6,109.8,81.9,23.2,90.4,37.7,5.0,abdominal pain with vomiting,3,synthetic_fallback
+25.0,Female,69.6,124.8,81.8,11.3,95.0,37.2,0.0,administrative medical clearance,5,synthetic_fallback
+78.0,Female,85.8,103.4,69.6,21.1,94.3,38.4,8.0,shortness of breath and tachycardia,2,synthetic_fallback
+4.0,Female,95.5,107.8,75.1,18.6,97.0,37.4,3.0,small laceration without bleeding,4,synthetic_fallback
+59.0,Female,85.5,147.8,99.3,24.0,98.1,38.2,3.0,small laceration without bleeding,3,synthetic_fallback
+73.0,Female,104.4,121.9,88.3,14.0,97.2,38.3,9.0,syncope and dizziness,3,synthetic_fallback
+80.0,Male,90.6,136.7,84.5,14.7,95.9,36.7,7.0,ankle sprain from minor fall,4,synthetic_fallback
+75.0,Female,86.0,126.2,73.4,16.0,100.0,38.5,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+88.0,Female,86.8,137.5,81.5,11.6,96.6,37.0,5.0,ankle sprain from minor fall,4,synthetic_fallback
+60.0,Female,95.3,133.3,77.7,13.8,96.7,35.9,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+43.0,Female,104.6,139.2,79.0,18.5,95.8,37.3,5.0,medication refill request,5,synthetic_fallback
+68.0,Female,59.2,101.8,54.5,13.6,92.5,37.1,5.0,ankle sprain from minor fall,4,synthetic_fallback
+35.0,Male,92.5,149.2,89.6,17.5,97.1,35.8,9.0,small laceration without bleeding,3,synthetic_fallback
+40.0,Male,118.3,106.9,68.6,24.2,100.0,36.7,5.0,high fever with confusion,3,synthetic_fallback
+56.0,Female,86.4,124.6,73.6,18.1,95.9,37.7,4.0,syncope and dizziness,3,synthetic_fallback
+96.0,Male,86.7,118.0,75.6,11.0,89.1,36.8,1.0,mild rash no respiratory symptoms,5,synthetic_fallback
+77.0,Female,115.0,93.6,59.4,23.6,83.6,38.4,10.0,shortness of breath and tachycardia,2,synthetic_fallback
+82.0,Male,106.0,94.6,56.7,32.3,90.6,41.1,5.0,chest pain radiating to left arm,2,synthetic_fallback
+42.0,Female,95.4,129.0,78.1,23.6,97.4,36.8,6.0,abdominal pain with vomiting,3,synthetic_fallback
+89.0,Female,185.7,81.5,47.0,23.2,84.9,37.5,8.0,possible stroke with slurred speech,1,synthetic_fallback
+58.0,Female,83.7,125.2,73.4,16.8,97.0,38.3,3.0,administrative medical clearance,5,synthetic_fallback
+52.0,Female,146.6,94.7,63.4,19.6,85.6,37.3,10.0,chest pain radiating to left arm,2,synthetic_fallback
+74.0,Male,73.3,138.8,73.4,24.1,96.3,37.8,9.0,headache and nausea,3,synthetic_fallback
+17.0,Male,76.8,116.0,71.0,14.1,93.5,36.0,5.0,medication refill request,5,synthetic_fallback
+11.0,Female,85.6,120.3,75.4,12.6,97.2,37.2,6.0,mild allergic reaction,4,synthetic_fallback
+27.0,Male,86.9,132.1,82.0,21.4,93.8,38.1,6.0,moderate asthma exacerbation,3,synthetic_fallback
+45.0,Female,76.2,127.2,84.8,20.6,97.0,36.8,3.0,sore throat and low fever,4,synthetic_fallback
+48.0,Female,111.6,109.9,73.4,15.9,94.2,37.9,5.0,headache and nausea,3,synthetic_fallback
+66.0,Female,92.9,130.0,80.3,17.7,94.2,35.4,5.0,mild rash no respiratory symptoms,4,synthetic_fallback
+62.0,Male,86.6,140.7,89.2,16.5,93.7,37.7,3.0,fever and cough for 3 days,3,synthetic_fallback
+26.0,Male,106.5,136.6,76.7,15.4,97.7,36.8,6.0,mild allergic reaction,4,synthetic_fallback
+45.0,Male,117.6,114.2,73.0,29.3,93.4,39.1,8.0,shortness of breath and tachycardia,2,synthetic_fallback
+9.0,Male,94.9,80.1,49.6,29.8,89.4,38.7,10.0,altered mental status and hypotension,1,synthetic_fallback
+95.0,Female,95.3,90.1,55.2,22.8,98.9,37.3,4.0,fever and cough for 3 days,3,synthetic_fallback
+62.0,Other,78.3,109.4,79.7,21.6,97.2,39.5,3.0,sore throat and low fever,4,synthetic_fallback
+48.0,Male,81.2,118.5,72.4,17.2,97.2,37.3,3.0,small laceration without bleeding,4,synthetic_fallback
+47.0,Male,76.4,99.5,56.4,15.6,100.0,36.7,6.0,medication refill request,5,synthetic_fallback
+47.0,Male,81.0,112.3,66.8,16.9,96.6,36.0,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+39.0,Female,88.5,132.5,78.3,22.7,97.1,37.3,7.0,abdominal pain with vomiting,3,synthetic_fallback
+54.0,Female,88.8,118.5,87.9,17.0,96.8,36.6,3.0,small laceration without bleeding,4,synthetic_fallback
+47.0,Female,75.3,123.2,70.6,17.4,96.6,37.1,1.0,small laceration without bleeding,4,synthetic_fallback
+4.0,Female,80.4,118.5,76.0,14.1,100.0,35.6,5.0,administrative medical clearance,5,synthetic_fallback
+46.0,Female,89.1,133.4,73.4,18.8,97.7,36.6,1.0,medication refill request,5,synthetic_fallback
+33.0,Female,114.0,89.8,73.4,34.9,93.8,37.6,7.0,chest pain radiating to left arm,2,synthetic_fallback
+57.0,Male,74.7,104.3,60.5,13.8,100.0,37.2,1.0,chronic back pain stable,5,synthetic_fallback
+50.0,Male,70.1,119.4,70.3,17.1,97.6,36.4,5.0,small laceration without bleeding,4,synthetic_fallback
+42.0,Female,86.9,108.6,67.3,18.5,95.6,37.2,0.0,medication refill request,5,synthetic_fallback
+0.0,Male,64.4,136.9,93.4,14.6,100.0,37.1,2.0,medication refill request,4,synthetic_fallback
+47.0,Female,118.1,133.7,76.7,14.5,89.9,35.5,5.0,mild allergic reaction,4,synthetic_fallback
+64.0,Male,104.7,124.3,72.8,28.4,92.2,35.9,3.0,abdominal pain with vomiting,3,synthetic_fallback
+50.0,Female,104.6,88.6,73.4,25.3,84.0,38.9,5.0,fever and cough for 3 days,2,synthetic_fallback
+30.0,Female,121.4,81.6,41.1,32.5,85.8,37.3,8.0,severe shortness of breath with chest pain,1,synthetic_fallback
+57.0,Male,100.7,128.5,70.4,16.8,97.1,36.6,2.0,administrative medical clearance,5,synthetic_fallback
+54.0,Male,93.7,118.5,77.7,28.2,96.0,35.9,5.0,moderate asthma exacerbation,3,synthetic_fallback
+76.0,Female,87.9,111.8,72.8,12.4,95.8,36.9,3.0,mild allergic reaction,4,synthetic_fallback
+63.0,Male,81.0,125.9,82.8,15.1,99.9,37.5,4.0,mild allergic reaction,4,synthetic_fallback
+5.0,Male,69.7,139.9,90.8,22.9,97.3,38.8,7.0,mild allergic reaction,5,synthetic_fallback
+44.0,Female,90.6,121.2,73.4,15.9,94.3,35.8,6.0,moderate asthma exacerbation,3,synthetic_fallback
+21.0,Female,70.6,130.0,76.9,17.2,95.5,37.0,4.0,small laceration without bleeding,4,synthetic_fallback
+75.0,Female,136.6,118.5,51.7,16.5,88.5,38.0,8.0,chest pain radiating to left arm,2,synthetic_fallback
+46.0,Male,81.4,119.0,71.1,23.4,98.6,38.0,5.0,moderate asthma exacerbation,4,synthetic_fallback
+56.0,Female,103.6,102.8,73.4,22.6,93.7,36.0,3.0,small laceration without bleeding,4,synthetic_fallback
+49.0,Female,89.4,126.1,86.6,10.9,93.4,36.4,0.0,mild allergic reaction,4,synthetic_fallback
+65.0,Female,80.9,155.6,89.2,21.3,94.0,35.2,2.0,chronic back pain stable,4,synthetic_fallback
+36.0,Male,81.4,146.7,73.4,12.9,96.1,38.1,4.0,medication refill request,5,synthetic_fallback
+37.0,Male,97.7,118.8,72.5,25.8,95.9,36.8,4.0,abdominal pain with vomiting,3,synthetic_fallback
+23.0,Female,97.3,130.9,73.3,17.6,88.0,35.6,3.0,abdominal pain with vomiting,3,synthetic_fallback
+61.0,Female,92.6,134.2,73.6,14.1,92.6,37.0,5.0,headache and nausea,3,synthetic_fallback
+59.0,Male,75.0,137.4,87.1,16.4,100.0,37.0,5.0,mild allergic reaction,5,synthetic_fallback
+79.0,Male,89.1,127.4,77.2,18.6,98.0,37.8,9.0,fever and cough for 3 days,3,synthetic_fallback
+57.0,Female,110.9,118.5,69.9,31.3,94.2,37.6,10.0,shortness of breath and tachycardia,2,synthetic_fallback
+68.0,Male,77.7,115.1,71.6,23.2,88.9,36.8,7.0,abdominal pain with vomiting,3,synthetic_fallback
+21.0,Male,74.1,112.3,66.8,10.1,97.5,37.2,3.0,administrative medical clearance,5,synthetic_fallback
+61.0,Female,84.2,142.6,93.0,22.2,96.5,37.9,1.0,small laceration without bleeding,4,synthetic_fallback
+79.0,Male,103.0,121.1,74.8,23.5,92.7,39.5,8.0,moderate asthma exacerbation,2,synthetic_fallback
+56.0,Female,75.7,140.7,73.4,20.6,100.0,35.5,2.0,chronic back pain stable,4,synthetic_fallback
+61.0,Female,94.3,80.3,49.3,23.8,89.8,37.3,5.0,high fever with confusion,2,synthetic_fallback
+42.0,Male,74.2,140.4,86.4,20.3,96.9,36.8,4.0,mild allergic reaction,4,synthetic_fallback
+51.0,Male,106.3,123.4,79.6,20.7,100.0,38.3,7.0,chest pain radiating to left arm,3,synthetic_fallback
+7.0,Female,97.4,123.9,84.2,14.2,99.6,37.3,4.0,sore throat and low fever,4,synthetic_fallback
+35.0,Male,98.6,119.0,74.9,26.6,93.0,35.2,8.0,shortness of breath and tachycardia,2,synthetic_fallback
+60.0,Male,91.3,89.9,61.6,19.5,98.9,37.1,8.0,fever and cough for 3 days,3,synthetic_fallback
+21.0,Female,88.7,137.8,80.8,14.8,95.8,37.6,2.0,small laceration without bleeding,4,synthetic_fallback
+35.0,Male,83.0,123.7,84.9,19.1,98.1,37.1,4.0,ankle sprain from minor fall,4,synthetic_fallback
+50.0,Female,117.4,118.6,85.1,30.2,94.2,36.7,6.0,high fever with confusion,2,synthetic_fallback
+97.0,Female,73.1,133.6,80.2,13.5,98.8,39.1,2.0,medication refill request,5,synthetic_fallback
+38.0,Female,76.0,131.1,71.6,19.6,98.9,35.7,3.0,ankle sprain from minor fall,4,synthetic_fallback
+56.0,Female,80.6,100.2,63.6,20.3,96.3,38.1,7.0,abdominal pain with vomiting,3,synthetic_fallback
+65.0,Female,90.6,118.5,51.8,23.8,94.6,36.7,6.0,abdominal pain with vomiting,3,synthetic_fallback
+50.0,Female,84.5,123.9,72.0,16.4,95.8,35.9,5.0,administrative medical clearance,4,synthetic_fallback
+60.0,Female,99.9,66.2,50.6,19.6,98.2,36.0,7.0,moderate asthma exacerbation,3,synthetic_fallback
+86.0,Male,131.8,96.3,62.6,19.6,89.6,38.3,6.0,syncope and dizziness,2,synthetic_fallback
+50.0,Female,80.3,138.6,91.6,18.9,95.8,37.1,1.0,abdominal pain with vomiting,3,synthetic_fallback
+49.0,Male,93.5,94.4,67.6,14.6,99.5,35.5,7.0,sore throat and low fever,4,synthetic_fallback
+68.0,Male,90.6,117.0,73.2,23.4,92.4,36.6,4.0,fever and cough for 3 days,3,synthetic_fallback
+62.0,Female,91.3,100.1,75.5,21.3,93.8,37.4,5.0,moderate asthma exacerbation,4,synthetic_fallback
+10.0,Male,83.8,95.8,50.9,23.5,95.7,38.8,6.0,fever and cough for 3 days,3,synthetic_fallback
+69.0,Female,131.4,109.5,67.5,32.3,74.6,37.7,9.0,shortness of breath and tachycardia,2,synthetic_fallback
+40.0,Male,86.2,131.6,91.2,16.4,98.1,36.8,3.0,sore throat and low fever,4,synthetic_fallback
+70.0,Male,83.2,131.8,89.1,19.7,100.0,37.6,3.0,abdominal pain with vomiting,3,synthetic_fallback
+44.0,Male,66.0,131.6,81.1,19.3,90.1,37.4,5.0,headache and nausea,3,synthetic_fallback
+58.0,Female,114.9,105.3,53.3,32.3,93.2,38.7,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+64.0,Female,132.7,84.0,55.1,23.6,79.9,36.5,10.0,altered mental status and hypotension,1,synthetic_fallback
+84.0,Female,90.0,166.5,108.0,22.9,100.0,36.7,2.0,mild allergic reaction,4,synthetic_fallback
+52.0,Male,53.6,131.7,89.4,18.6,91.7,37.0,5.0,moderate asthma exacerbation,3,synthetic_fallback
+57.0,Male,81.2,118.5,73.4,15.4,100.0,36.8,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+30.0,Male,102.3,92.0,55.5,16.9,94.3,37.9,6.0,high fever with confusion,2,synthetic_fallback
+33.0,Male,80.0,116.4,75.1,16.4,96.8,36.6,8.0,mild allergic reaction,4,synthetic_fallback
+30.0,Male,61.0,158.0,92.7,14.8,98.1,38.1,4.0,medication refill request,5,synthetic_fallback
+12.0,Male,80.6,145.2,100.9,13.3,97.8,37.3,0.0,medication refill request,5,synthetic_fallback
+74.0,Female,81.7,146.9,89.1,18.4,98.3,35.8,6.0,small laceration without bleeding,4,synthetic_fallback
+52.0,Male,83.3,113.8,73.1,17.7,96.3,36.2,6.0,mild allergic reaction,4,synthetic_fallback
+73.0,Female,104.3,129.1,80.8,23.0,95.9,38.9,6.0,abdominal pain with vomiting,3,synthetic_fallback
+80.0,Female,89.8,118.8,71.4,22.0,98.7,38.2,2.0,ankle sprain from minor fall,4,synthetic_fallback
+36.0,Other,139.6,79.4,47.2,32.1,87.1,38.1,6.0,syncope and dizziness,2,synthetic_fallback
+34.0,Female,98.1,118.2,76.8,17.5,96.1,38.1,9.0,ankle sprain from minor fall,4,synthetic_fallback
+62.0,Female,82.8,117.1,64.5,19.5,96.6,37.9,5.0,sore throat and low fever,3,synthetic_fallback
+38.0,Female,110.2,95.7,58.2,20.1,96.2,38.0,9.0,syncope and dizziness,2,synthetic_fallback
+69.0,Female,57.9,103.5,62.4,20.6,94.6,38.0,5.0,headache and nausea,3,synthetic_fallback
+68.0,Female,87.8,96.1,66.2,12.5,95.7,37.8,6.0,mild allergic reaction,4,synthetic_fallback
+59.0,Female,79.8,118.5,66.5,20.4,93.5,36.9,5.0,small laceration without bleeding,4,synthetic_fallback
+55.0,Male,105.0,119.4,74.4,14.5,96.2,37.0,6.0,headache and nausea,3,synthetic_fallback
+58.0,Male,79.6,108.0,73.4,17.3,94.4,38.3,4.0,small laceration without bleeding,5,synthetic_fallback
+49.0,Female,62.2,163.8,100.2,14.7,99.8,36.4,0.0,chronic back pain stable,5,synthetic_fallback
+65.0,Male,95.2,68.2,44.8,30.9,96.3,36.9,7.0,chest pain radiating to left arm,2,synthetic_fallback
+62.0,Male,100.5,108.4,70.4,26.0,84.4,38.8,5.0,severe shortness of breath with chest pain,2,synthetic_fallback
+97.0,Male,83.9,104.7,55.3,19.9,95.9,38.2,2.0,ankle sprain from minor fall,4,synthetic_fallback
+54.0,Male,89.1,123.1,80.1,18.5,96.0,37.3,4.0,high fever with confusion,3,synthetic_fallback
+75.0,Female,73.7,129.8,80.5,11.4,100.0,37.3,2.0,chronic back pain stable,5,synthetic_fallback
+41.0,Female,81.0,116.1,87.0,19.5,100.0,39.6,2.0,headache and nausea,3,synthetic_fallback
+29.0,Male,87.0,86.2,61.3,22.6,95.7,38.1,10.0,syncope and dizziness,2,synthetic_fallback
+3.0,Female,76.7,127.9,74.0,21.2,95.3,34.9,10.0,headache and nausea,3,synthetic_fallback
+6.0,Male,96.7,107.9,67.6,13.1,100.0,36.3,7.0,ankle sprain from minor fall,4,synthetic_fallback
+53.0,Female,68.9,134.4,84.5,16.7,100.0,36.3,4.0,administrative medical clearance,5,synthetic_fallback
+22.0,Male,90.6,117.7,76.4,16.3,93.3,38.7,7.0,moderate asthma exacerbation,3,synthetic_fallback
+17.0,Male,96.8,152.0,86.9,9.4,94.8,36.3,4.0,mild allergic reaction,4,synthetic_fallback
+21.0,Female,69.4,125.1,73.1,11.8,95.9,36.5,1.0,chronic back pain stable,5,synthetic_fallback
+45.0,Male,96.9,110.4,65.2,24.4,93.8,37.2,8.0,ankle sprain from minor fall,4,synthetic_fallback
+0.0,Male,106.1,55.0,73.4,13.4,87.1,38.7,7.0,altered mental status and hypotension,2,synthetic_fallback
+68.0,Female,68.7,116.6,67.2,9.7,99.6,35.6,5.0,sore throat and low fever,4,synthetic_fallback
+55.0,Female,92.7,123.7,74.0,13.8,98.7,37.0,5.0,ankle sprain from minor fall,4,synthetic_fallback
+55.0,Male,75.9,122.3,77.2,16.9,97.2,36.1,2.0,medication refill request,5,synthetic_fallback
+13.0,Female,83.8,161.5,91.9,18.5,94.5,40.5,6.0,sore throat and low fever,4,synthetic_fallback
+56.0,Male,104.1,124.1,73.2,18.5,100.0,37.5,2.0,small laceration without bleeding,4,synthetic_fallback
+56.0,Female,82.7,135.6,94.3,16.7,96.7,38.0,8.0,headache and nausea,3,synthetic_fallback
+48.0,Male,79.9,121.2,92.1,14.0,95.9,37.3,1.0,abdominal pain with vomiting,3,synthetic_fallback
+0.0,Female,86.2,107.1,68.3,11.4,98.9,35.8,3.0,sore throat and low fever,4,synthetic_fallback
+31.0,Female,90.8,123.4,82.3,17.8,100.0,35.5,4.0,medication refill request,5,synthetic_fallback
+28.0,Male,70.3,132.8,71.5,22.5,95.9,36.9,6.0,small laceration without bleeding,4,synthetic_fallback
+81.0,Female,62.8,118.5,92.9,14.9,97.0,37.9,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+44.0,Male,70.6,99.2,62.3,10.0,100.0,39.2,7.0,abdominal pain with vomiting,3,synthetic_fallback
+11.0,Male,90.6,68.6,35.3,20.1,90.2,37.8,8.0,high fever with confusion,2,synthetic_fallback
+43.0,Male,103.4,72.1,43.1,18.5,97.7,37.3,8.0,syncope and dizziness,2,synthetic_fallback
+37.0,Female,97.2,81.0,53.7,24.0,97.8,37.4,6.0,chest pain radiating to left arm,2,synthetic_fallback
+22.0,Female,105.0,137.3,80.2,18.4,91.8,37.2,3.0,mild allergic reaction,3,synthetic_fallback
+76.0,Female,105.5,119.8,70.2,23.5,98.5,40.2,1.0,mild allergic reaction,4,synthetic_fallback
+65.0,Female,90.9,102.9,62.3,18.0,96.8,38.3,3.0,mild allergic reaction,4,synthetic_fallback
+39.0,Female,140.4,99.7,65.3,15.0,96.9,39.2,6.0,abdominal pain with vomiting,3,synthetic_fallback
+48.0,Male,111.4,99.2,61.7,17.3,96.4,38.8,10.0,sore throat and low fever,3,synthetic_fallback
+46.0,Male,74.6,103.6,62.6,19.3,96.8,35.7,5.0,sore throat and low fever,4,synthetic_fallback
+36.0,Female,90.0,101.7,57.8,14.1,89.1,37.2,6.0,moderate asthma exacerbation,2,synthetic_fallback
+49.0,Male,103.1,138.5,73.4,15.8,92.9,37.8,4.0,headache and nausea,3,synthetic_fallback
+44.0,Female,105.3,158.0,108.0,21.7,97.1,36.9,5.0,sore throat and low fever,4,synthetic_fallback
+52.0,Female,112.0,119.4,86.2,16.0,100.0,36.9,10.0,high fever with confusion,4,synthetic_fallback
+60.0,Male,76.5,160.5,103.8,13.5,96.7,38.2,2.0,chronic back pain stable,5,synthetic_fallback
+83.0,Male,85.9,134.0,76.2,23.6,98.0,37.7,6.0,mild allergic reaction,4,synthetic_fallback
+57.0,Female,82.9,122.9,70.5,19.7,87.8,38.0,1.0,abdominal pain with vomiting,3,synthetic_fallback
+42.0,Male,118.3,118.5,76.2,24.8,95.3,38.2,7.0,headache and nausea,3,synthetic_fallback
+59.0,Other,137.6,93.2,53.6,27.9,92.2,37.1,7.0,chest pain radiating to left arm,2,synthetic_fallback
+37.0,Male,72.0,107.0,63.5,16.9,100.0,36.8,3.0,medication refill request,5,synthetic_fallback
+46.0,Female,57.9,132.2,90.9,15.5,95.9,37.9,7.0,small laceration without bleeding,4,synthetic_fallback
+59.0,Female,110.9,115.7,85.4,16.7,88.5,37.1,8.0,headache and nausea,3,synthetic_fallback
+77.0,Female,121.5,107.3,70.0,19.3,97.7,36.3,8.0,abdominal pain with vomiting,3,synthetic_fallback
+58.0,Female,93.0,107.8,71.2,23.1,96.3,37.0,7.0,abdominal pain with vomiting,3,synthetic_fallback
+25.0,Male,73.8,106.8,66.5,15.9,97.7,37.0,3.0,headache and nausea,3,synthetic_fallback
+53.0,Male,71.4,117.8,71.4,22.2,96.7,38.2,6.0,headache and nausea,3,synthetic_fallback
+85.0,Male,82.6,127.7,75.0,20.4,100.0,37.3,6.0,mild allergic reaction,4,synthetic_fallback
+52.0,Female,90.3,127.8,81.3,12.3,98.6,36.7,6.0,administrative medical clearance,5,synthetic_fallback
+56.0,Male,143.7,99.4,73.4,28.2,95.7,38.3,8.0,fever and cough for 3 days,2,synthetic_fallback
+54.0,Female,78.6,113.3,70.9,19.8,97.7,36.9,4.0,fever and cough for 3 days,3,synthetic_fallback
+45.0,Male,91.2,113.6,65.2,20.5,100.0,37.3,6.0,headache and nausea,3,synthetic_fallback
+47.0,Female,83.0,113.9,66.0,11.4,93.5,37.4,7.0,fever and cough for 3 days,3,synthetic_fallback
+76.0,Female,82.2,96.3,61.1,19.7,95.4,37.6,3.0,mild allergic reaction,4,synthetic_fallback
+66.0,Female,71.5,145.9,96.8,18.5,99.6,36.8,3.0,chronic back pain stable,5,synthetic_fallback
+43.0,Male,115.7,127.9,81.7,25.6,92.2,37.6,8.0,fever and cough for 3 days,3,synthetic_fallback
+42.0,Male,135.6,111.6,73.4,20.5,88.5,37.4,9.0,chest pain radiating to left arm,2,synthetic_fallback
+29.0,Other,97.6,129.6,89.2,16.7,94.1,36.5,1.0,sore throat and low fever,5,synthetic_fallback
+78.0,Male,83.9,139.9,83.7,9.3,96.8,36.7,4.0,small laceration without bleeding,4,synthetic_fallback
+24.0,Male,121.6,94.4,66.0,25.5,95.9,37.0,7.0,fever and cough for 3 days,3,synthetic_fallback
+43.0,Male,121.0,100.9,48.5,29.5,96.4,38.5,10.0,high fever with confusion,2,synthetic_fallback
+19.0,Female,67.6,146.1,89.4,18.1,96.4,37.1,0.0,mild allergic reaction,4,synthetic_fallback
+63.0,Female,101.7,86.7,56.8,31.0,94.9,38.4,3.0,chest pain radiating to left arm,2,synthetic_fallback
+0.0,Female,70.8,118.2,73.4,21.0,98.2,36.5,2.0,sore throat and low fever,4,synthetic_fallback
+46.0,Female,94.9,77.0,46.3,30.8,100.0,37.6,4.0,chest pain radiating to left arm,2,synthetic_fallback
+35.0,Male,86.5,114.1,72.2,19.3,90.1,37.3,9.0,headache and nausea,3,synthetic_fallback
+75.0,Female,107.6,125.7,87.8,11.8,95.8,37.1,2.0,abdominal pain with vomiting,4,synthetic_fallback
+58.0,Male,68.7,138.8,90.3,11.7,99.8,38.1,6.0,chronic back pain stable,5,synthetic_fallback
+44.0,Female,77.3,134.7,76.4,18.9,96.3,36.7,0.0,ankle sprain from minor fall,5,synthetic_fallback
+23.0,Female,44.9,130.4,80.2,12.8,97.3,36.5,4.0,administrative medical clearance,5,synthetic_fallback
+57.0,Female,104.3,108.2,86.6,22.3,98.5,38.5,6.0,moderate asthma exacerbation,4,synthetic_fallback
+26.0,Male,91.9,107.0,69.6,17.6,100.0,36.9,5.0,mild allergic reaction,4,synthetic_fallback
+61.0,Female,109.5,131.2,75.1,20.7,85.5,37.8,7.0,fever and cough for 3 days,3,synthetic_fallback
+73.0,Female,85.7,142.7,83.8,17.3,97.0,37.5,4.0,administrative medical clearance,5,synthetic_fallback
+7.0,Male,65.0,128.3,70.9,17.5,96.6,36.4,7.0,ankle sprain from minor fall,4,synthetic_fallback
+33.0,Male,87.2,129.3,76.7,19.4,95.3,37.8,2.0,sore throat and low fever,4,synthetic_fallback
+47.0,Female,74.7,139.9,73.4,21.7,100.0,36.4,0.0,sore throat and low fever,4,synthetic_fallback
+49.0,Female,94.1,118.4,73.8,17.7,97.2,37.1,8.0,moderate asthma exacerbation,3,synthetic_fallback
+85.0,Female,102.8,98.7,59.4,15.2,99.4,38.6,5.0,ankle sprain from minor fall,4,synthetic_fallback
+24.0,Female,127.8,129.2,92.8,35.8,88.8,37.3,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+45.0,Female,108.1,112.6,72.7,19.7,84.2,38.8,5.0,syncope and dizziness,2,synthetic_fallback
+32.0,Female,138.5,96.7,57.6,20.8,90.7,36.4,10.0,high fever with confusion,2,synthetic_fallback
+65.0,Male,97.0,118.6,72.4,23.7,96.5,38.1,7.0,abdominal pain with vomiting,3,synthetic_fallback
+42.0,Male,68.6,146.7,96.8,16.9,92.4,37.0,4.0,small laceration without bleeding,5,synthetic_fallback
+0.0,Male,111.6,109.5,55.6,19.9,97.1,37.0,7.0,abdominal pain with vomiting,3,synthetic_fallback
+75.0,Female,105.1,112.2,69.1,26.3,96.7,38.6,0.0,moderate asthma exacerbation,3,synthetic_fallback
+74.0,Female,101.7,118.5,88.7,18.8,97.8,37.9,2.0,administrative medical clearance,5,synthetic_fallback
+61.0,Female,130.0,67.9,46.4,34.1,90.0,38.3,8.0,high fever with confusion,2,synthetic_fallback
+30.0,Female,91.5,97.8,62.7,18.5,88.6,37.1,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+81.0,Male,83.1,159.7,96.7,16.9,96.6,37.6,3.0,chronic back pain stable,5,synthetic_fallback
+55.0,Female,76.5,127.0,70.8,10.2,95.4,38.2,3.0,medication refill request,5,synthetic_fallback
+22.0,Female,116.5,106.4,68.3,25.2,93.0,38.3,3.0,chest pain radiating to left arm,3,synthetic_fallback
+83.0,Male,83.5,107.5,79.2,16.7,95.9,38.1,5.0,moderate asthma exacerbation,3,synthetic_fallback
+0.0,Male,83.8,101.2,58.5,17.5,91.6,38.9,10.0,moderate asthma exacerbation,3,synthetic_fallback
+35.0,Female,89.6,108.4,72.4,18.5,94.3,37.7,9.0,mild allergic reaction,3,synthetic_fallback
+15.0,Male,74.9,140.1,80.4,18.2,99.7,37.0,1.0,medication refill request,5,synthetic_fallback
+27.0,Female,117.3,119.4,72.4,29.7,86.0,37.8,5.0,abdominal pain with vomiting,2,synthetic_fallback
+74.0,Male,60.2,94.2,52.9,17.0,97.3,37.5,3.0,fever and cough for 3 days,4,synthetic_fallback
+60.0,Male,92.8,161.0,97.3,21.3,96.9,36.0,1.0,mild allergic reaction,4,synthetic_fallback
+41.0,Female,91.1,128.8,81.5,15.5,99.6,36.3,5.0,medication refill request,5,synthetic_fallback
+37.0,Female,98.2,111.3,69.0,27.3,97.3,36.8,4.0,high fever with confusion,2,synthetic_fallback
+47.0,Female,74.8,117.3,73.4,18.4,98.7,37.8,4.0,sore throat and low fever,4,synthetic_fallback
+41.0,Male,90.3,130.9,73.5,20.9,94.6,36.1,3.0,small laceration without bleeding,3,synthetic_fallback
+35.0,Male,63.2,172.8,106.0,11.8,97.8,37.2,5.0,mild rash no respiratory symptoms,5,synthetic_fallback
+53.0,Female,59.4,149.8,78.9,19.1,95.9,36.4,4.0,chronic back pain stable,5,synthetic_fallback
+36.0,Other,98.3,145.6,73.4,20.0,95.9,37.5,5.0,fever and cough for 3 days,3,synthetic_fallback
+55.0,Female,77.3,118.5,83.3,14.9,92.9,37.8,6.0,ankle sprain from minor fall,4,synthetic_fallback
+27.0,Male,129.4,111.8,74.0,31.8,91.2,36.6,9.0,high fever with confusion,2,synthetic_fallback
+57.0,Female,102.5,127.8,79.0,15.8,94.7,37.8,5.0,mild allergic reaction,4,synthetic_fallback
+56.0,Female,93.6,118.3,77.8,21.6,95.9,37.7,4.0,ankle sprain from minor fall,4,synthetic_fallback
+67.0,Male,84.0,76.8,52.8,18.1,95.9,37.1,9.0,headache and nausea,3,synthetic_fallback
+50.0,Female,116.0,131.3,88.3,18.3,94.7,37.3,4.0,fever and cough for 3 days,4,synthetic_fallback
+6.0,Female,57.7,139.1,87.4,13.8,100.0,37.0,4.0,administrative medical clearance,5,synthetic_fallback
+54.0,Female,75.7,109.3,66.8,14.7,95.3,37.8,6.0,headache and nausea,4,synthetic_fallback
+76.0,Female,125.2,58.3,73.4,18.5,81.9,39.7,8.0,possible stroke with slurred speech,1,synthetic_fallback
+46.0,Female,78.7,134.9,87.0,14.9,100.0,36.7,0.0,administrative medical clearance,5,synthetic_fallback
+68.0,Female,100.9,116.3,82.9,23.1,97.5,37.8,2.0,headache and nausea,3,synthetic_fallback
+97.0,Female,93.3,113.7,61.7,14.7,92.1,35.7,4.0,fever and cough for 3 days,3,synthetic_fallback
+29.0,Female,90.6,124.3,64.7,11.4,93.3,37.3,5.0,small laceration without bleeding,5,synthetic_fallback
+56.0,Female,90.6,87.0,53.7,12.0,100.0,37.4,0.0,mild rash no respiratory symptoms,5,synthetic_fallback
+69.0,Female,118.3,119.2,69.0,17.8,94.4,39.0,9.0,fever and cough for 3 days,3,synthetic_fallback
+73.0,Female,78.2,141.6,85.4,16.8,90.7,36.7,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+31.0,Male,94.5,111.0,74.9,14.5,97.3,38.3,10.0,moderate asthma exacerbation,3,synthetic_fallback
+46.0,Female,91.6,78.2,51.0,19.2,94.2,35.7,4.0,small laceration without bleeding,4,synthetic_fallback
+65.0,Male,96.7,99.0,64.8,20.9,87.5,36.2,6.0,syncope and dizziness,2,synthetic_fallback
+24.0,Male,97.0,118.5,73.9,20.4,89.3,37.6,10.0,fever and cough for 3 days,3,synthetic_fallback
+57.0,Female,86.3,117.5,67.1,12.8,97.9,35.4,4.0,medication refill request,5,synthetic_fallback
+49.0,Male,114.6,88.1,69.3,21.2,100.0,38.5,8.0,chest pain radiating to left arm,2,synthetic_fallback
+80.0,Female,109.1,138.6,94.9,25.3,86.5,40.6,5.0,small laceration without bleeding,3,synthetic_fallback
+66.0,Female,106.4,128.1,68.9,18.5,92.1,38.4,5.0,ankle sprain from minor fall,4,synthetic_fallback
+47.0,Male,174.9,86.8,63.2,33.7,88.6,38.2,10.0,severe shortness of breath with chest pain,1,synthetic_fallback
+69.0,Female,80.0,131.9,76.1,18.1,95.4,37.4,2.0,ankle sprain from minor fall,5,synthetic_fallback
+48.0,Male,107.3,106.8,60.5,22.7,92.6,38.6,6.0,syncope and dizziness,2,synthetic_fallback
+78.0,Female,66.6,152.2,92.5,25.7,94.0,37.3,2.0,sore throat and low fever,4,synthetic_fallback
+58.0,Female,94.5,118.5,74.6,14.9,98.3,37.4,4.0,headache and nausea,3,synthetic_fallback
+56.0,Male,98.9,95.0,61.2,19.6,90.3,37.5,4.0,abdominal pain with vomiting,3,synthetic_fallback
+47.0,Female,56.2,136.7,88.4,9.3,98.5,35.8,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+71.0,Male,93.3,118.5,77.9,33.7,96.6,36.8,3.0,abdominal pain with vomiting,3,synthetic_fallback
+54.0,Female,83.4,132.9,79.0,18.9,99.5,37.0,5.0,mild allergic reaction,4,synthetic_fallback
+72.0,Male,108.2,105.7,69.1,20.1,92.2,37.1,3.0,moderate asthma exacerbation,3,synthetic_fallback
+0.0,Female,105.9,108.7,62.0,23.3,88.2,36.5,1.0,headache and nausea,3,synthetic_fallback
+51.0,Female,91.4,97.7,51.0,23.4,85.9,36.6,4.0,severe shortness of breath with chest pain,2,synthetic_fallback
+17.0,Female,96.2,104.3,70.1,12.2,100.0,37.0,2.0,moderate asthma exacerbation,3,synthetic_fallback
+58.0,Male,83.4,115.1,65.4,25.7,97.3,40.2,5.0,high fever with confusion,3,synthetic_fallback
+55.0,Female,90.6,122.3,79.1,22.1,89.8,37.8,6.0,headache and nausea,3,synthetic_fallback
+68.0,Female,110.1,135.7,84.6,23.5,99.1,38.4,6.0,headache and nausea,4,synthetic_fallback
+64.0,Female,117.4,90.4,49.0,28.8,86.7,36.9,4.0,shortness of breath and tachycardia,2,synthetic_fallback
+33.0,Male,103.2,111.4,67.5,18.4,97.1,38.5,8.0,headache and nausea,3,synthetic_fallback
+50.0,Male,88.1,107.7,73.4,11.3,100.0,38.3,5.0,mild rash no respiratory symptoms,5,synthetic_fallback
+69.0,Male,131.7,118.8,63.1,18.3,89.8,38.0,8.0,syncope and dizziness,2,synthetic_fallback
+46.0,Male,73.0,130.0,77.9,13.0,98.2,37.4,2.0,medication refill request,5,synthetic_fallback
+15.0,Female,91.5,101.6,55.8,17.8,100.0,39.0,7.0,ankle sprain from minor fall,4,synthetic_fallback
+7.0,Female,82.8,115.4,66.4,14.4,93.6,38.0,4.0,sore throat and low fever,4,synthetic_fallback
+32.0,Female,63.5,136.4,81.7,11.9,98.6,35.8,5.0,chronic back pain stable,5,synthetic_fallback
+29.0,Female,117.0,118.3,77.7,25.2,95.8,36.8,6.0,syncope and dizziness,2,synthetic_fallback
+45.0,Male,100.1,106.6,65.9,20.3,97.3,39.7,5.0,moderate asthma exacerbation,3,synthetic_fallback
+41.0,Female,90.6,88.3,73.4,18.0,92.9,37.4,2.0,small laceration without bleeding,4,synthetic_fallback
+79.0,Male,102.8,100.6,68.1,21.6,92.9,37.6,7.0,fever and cough for 3 days,3,synthetic_fallback
+56.0,Female,116.4,126.4,76.8,18.5,93.5,39.1,5.0,moderate asthma exacerbation,2,synthetic_fallback
+50.0,Other,123.2,118.5,65.5,42.7,87.8,37.6,9.0,shortness of breath and tachycardia,2,synthetic_fallback
+45.0,Other,70.1,155.1,90.0,19.4,92.7,37.4,2.0,chronic back pain stable,5,synthetic_fallback
+46.0,Female,147.1,70.8,54.9,26.9,87.3,37.8,6.0,chest pain radiating to left arm,2,synthetic_fallback
+57.0,Male,93.9,119.9,74.1,18.5,97.5,37.0,2.0,small laceration without bleeding,4,synthetic_fallback
+61.0,Male,83.9,103.2,61.3,19.6,97.3,38.9,7.0,high fever with confusion,3,synthetic_fallback
+17.0,Male,106.6,96.1,59.8,18.5,95.9,38.8,2.0,abdominal pain with vomiting,3,synthetic_fallback
+60.0,Female,75.0,144.6,87.9,17.1,95.8,36.1,4.0,medication refill request,5,synthetic_fallback
+47.0,Male,77.3,114.2,73.1,19.8,94.1,37.3,7.0,headache and nausea,3,synthetic_fallback
+39.0,Male,109.1,109.7,70.7,22.3,89.8,36.9,6.0,headache and nausea,3,synthetic_fallback
+39.0,Other,102.1,118.5,75.2,21.1,93.1,38.5,2.0,abdominal pain with vomiting,3,synthetic_fallback
+58.0,Female,73.6,108.7,69.2,21.8,98.7,37.0,2.0,sore throat and low fever,4,synthetic_fallback
+49.0,Female,157.2,103.2,66.4,24.8,95.9,37.5,7.0,possible stroke with slurred speech,2,synthetic_fallback
+43.0,Female,94.9,104.5,68.2,11.7,99.2,38.3,3.0,medication refill request,5,synthetic_fallback
+54.0,Female,65.3,162.6,108.7,18.5,96.1,38.0,6.0,sore throat and low fever,4,synthetic_fallback
+51.0,Female,79.1,167.2,104.4,20.1,96.3,36.5,4.0,sore throat and low fever,4,synthetic_fallback
+34.0,Female,98.5,116.2,65.9,19.1,98.9,36.4,5.0,moderate asthma exacerbation,3,synthetic_fallback
+84.0,Female,72.2,132.7,84.9,7.6,93.9,37.5,1.0,mild allergic reaction,4,synthetic_fallback
+60.0,Male,74.3,148.9,91.3,18.1,98.6,37.3,3.0,mild allergic reaction,4,synthetic_fallback
+78.0,Female,91.2,112.2,63.7,23.4,95.9,37.8,3.0,fever and cough for 3 days,3,synthetic_fallback
+41.0,Female,93.6,111.6,62.1,18.3,95.9,38.0,6.0,headache and nausea,3,synthetic_fallback
+67.0,Female,68.5,162.2,104.0,15.5,98.7,37.1,5.0,mild rash no respiratory symptoms,5,synthetic_fallback
+66.0,Female,80.3,140.0,83.6,14.9,97.7,37.1,3.0,mild allergic reaction,4,synthetic_fallback
+56.0,Male,90.0,149.0,92.2,19.9,99.7,37.3,5.0,ankle sprain from minor fall,4,synthetic_fallback
+51.0,Male,88.3,121.1,73.2,18.9,95.1,38.3,9.0,headache and nausea,3,synthetic_fallback
+74.0,Female,89.9,166.6,110.6,17.8,98.9,35.5,3.0,mild allergic reaction,4,synthetic_fallback
+39.0,Male,86.3,129.6,81.6,31.1,94.0,36.6,9.0,shortness of breath and tachycardia,3,synthetic_fallback
+50.0,Female,111.9,120.6,74.6,22.2,90.0,38.9,7.0,abdominal pain with vomiting,3,synthetic_fallback
+41.0,Female,87.0,112.0,69.5,23.5,95.9,35.5,3.0,abdominal pain with vomiting,3,synthetic_fallback
+37.0,Male,91.8,99.4,57.2,12.8,99.3,37.1,3.0,mild allergic reaction,4,synthetic_fallback
+26.0,Female,108.0,100.5,62.7,28.5,84.9,37.8,9.0,syncope and dizziness,2,synthetic_fallback
+34.0,Female,88.9,130.7,67.5,13.5,96.4,37.2,1.0,chronic back pain stable,5,synthetic_fallback
+58.0,Female,90.6,131.1,77.1,10.6,100.0,37.3,1.0,mild rash no respiratory symptoms,5,synthetic_fallback
+72.0,Female,127.3,114.7,65.2,38.3,96.8,38.3,7.0,shortness of breath and tachycardia,2,synthetic_fallback
+26.0,Female,101.0,112.1,63.5,20.1,93.0,37.2,10.0,abdominal pain with vomiting,3,synthetic_fallback
+41.0,Male,110.2,118.5,61.8,36.1,91.8,37.7,10.0,shortness of breath and tachycardia,2,synthetic_fallback
+26.0,Male,66.4,120.8,83.2,16.8,87.4,38.2,10.0,abdominal pain with vomiting,3,synthetic_fallback
+53.0,Male,72.4,140.0,79.8,20.7,99.9,36.5,5.0,headache and nausea,3,synthetic_fallback
+95.0,Female,66.9,149.6,90.9,13.9,95.9,37.6,5.0,mild allergic reaction,4,synthetic_fallback
+50.0,Female,75.9,118.8,61.9,16.0,100.0,35.3,1.0,mild allergic reaction,4,synthetic_fallback
+21.0,Female,64.9,97.5,66.8,14.2,92.8,37.8,6.0,abdominal pain with vomiting,4,synthetic_fallback
+60.0,Female,71.1,109.3,74.5,11.9,98.1,36.3,5.0,ankle sprain from minor fall,4,synthetic_fallback
+18.0,Male,78.6,131.0,70.8,16.3,92.6,37.1,1.0,sore throat and low fever,4,synthetic_fallback
+47.0,Female,93.1,107.3,63.3,18.5,100.0,38.5,1.0,small laceration without bleeding,4,synthetic_fallback
+45.0,Female,118.3,107.7,73.4,31.0,91.9,40.7,8.0,chest pain radiating to left arm,2,synthetic_fallback
+58.0,Male,63.5,104.7,63.9,16.7,95.3,37.4,5.0,fever and cough for 3 days,3,synthetic_fallback
+26.0,Female,119.8,109.5,67.9,36.2,93.8,40.3,8.0,syncope and dizziness,2,synthetic_fallback
+39.0,Male,82.4,118.7,74.3,18.3,95.2,37.5,7.0,fever and cough for 3 days,3,synthetic_fallback
+25.0,Female,109.8,95.4,63.4,22.2,100.0,39.3,8.0,fever and cough for 3 days,3,synthetic_fallback
+78.0,Female,115.4,137.9,89.9,21.1,97.7,38.4,9.0,moderate asthma exacerbation,3,synthetic_fallback
+76.0,Male,128.1,108.2,73.9,17.2,98.6,37.9,7.0,chest pain radiating to left arm,2,synthetic_fallback
+27.0,Female,91.5,157.1,99.1,18.3,97.6,38.1,7.0,moderate asthma exacerbation,3,synthetic_fallback
+49.0,Female,75.7,140.5,91.6,14.2,100.0,36.8,4.0,mild allergic reaction,4,synthetic_fallback
+44.0,Male,71.8,119.2,78.0,17.4,93.4,35.8,1.0,mild rash no respiratory symptoms,5,synthetic_fallback
+45.0,Female,123.2,107.2,71.0,33.7,89.0,35.6,6.0,syncope and dizziness,2,synthetic_fallback
+38.0,Female,127.7,77.4,48.0,27.6,88.3,36.2,5.0,syncope and dizziness,2,synthetic_fallback
+35.0,Male,70.3,130.4,86.1,18.2,98.9,35.9,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+39.0,Female,112.1,136.3,77.1,24.7,89.4,36.6,9.0,shortness of breath and tachycardia,2,synthetic_fallback
+32.0,Male,94.2,113.5,75.3,16.3,95.9,34.9,3.0,chest pain radiating to left arm,3,synthetic_fallback
+27.0,Male,104.8,131.0,84.8,21.2,98.1,38.9,6.0,moderate asthma exacerbation,3,synthetic_fallback
+41.0,Female,77.6,119.5,73.4,19.9,98.3,37.2,2.0,mild rash no respiratory symptoms,5,synthetic_fallback
+20.0,Male,59.8,127.2,73.4,13.5,95.9,37.4,1.0,administrative medical clearance,4,synthetic_fallback
+53.0,Male,99.8,107.7,67.5,28.1,92.8,38.5,7.0,fever and cough for 3 days,2,synthetic_fallback
+38.0,Female,99.2,96.7,65.9,18.5,93.0,38.1,8.0,headache and nausea,3,synthetic_fallback
+62.0,Male,97.5,126.1,82.6,20.2,95.6,35.4,5.0,ankle sprain from minor fall,4,synthetic_fallback
+39.0,Female,91.7,118.5,68.4,18.2,98.1,38.3,9.0,headache and nausea,3,synthetic_fallback
+18.0,Male,90.6,135.6,90.0,12.2,96.8,38.7,8.0,sore throat and low fever,4,synthetic_fallback
+23.0,Male,106.6,136.7,88.8,17.2,98.6,37.4,2.0,small laceration without bleeding,4,synthetic_fallback
+22.0,Female,109.7,90.9,50.2,25.0,85.5,38.4,4.0,syncope and dizziness,2,synthetic_fallback
+44.0,Female,77.6,121.1,69.7,9.2,99.2,35.8,8.0,fever and cough for 3 days,3,synthetic_fallback
+49.0,Male,108.3,111.9,64.4,18.5,93.7,38.1,9.0,possible stroke with slurred speech,2,synthetic_fallback
+45.0,Female,107.5,127.1,80.3,23.3,94.1,37.2,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+51.0,Male,97.6,100.3,70.7,18.5,96.9,37.9,7.0,fever and cough for 3 days,3,synthetic_fallback
+58.0,Female,73.0,127.4,77.7,10.6,100.0,37.3,5.0,mild rash no respiratory symptoms,5,synthetic_fallback
+63.0,Female,81.7,104.8,63.8,20.5,95.9,36.7,6.0,headache and nausea,3,synthetic_fallback
+47.0,Female,85.6,128.0,76.9,16.5,92.0,37.9,10.0,fever and cough for 3 days,3,synthetic_fallback
+61.0,Male,115.7,129.3,78.5,28.8,93.0,35.6,5.0,fever and cough for 3 days,3,synthetic_fallback
+67.0,Male,89.0,111.6,67.2,17.2,98.4,36.1,3.0,moderate asthma exacerbation,2,synthetic_fallback
+83.0,Male,125.4,110.2,68.0,23.6,88.7,37.3,9.0,fever and cough for 3 days,2,synthetic_fallback
+42.0,Female,93.5,86.3,50.0,23.7,92.1,37.6,2.0,moderate asthma exacerbation,3,synthetic_fallback
+49.0,Male,80.6,95.7,53.9,14.7,89.2,37.3,6.0,ankle sprain from minor fall,4,synthetic_fallback
+59.0,Female,55.0,132.0,82.1,20.9,96.0,37.6,2.0,mild allergic reaction,5,synthetic_fallback
+65.0,Female,92.4,114.4,73.2,15.6,100.0,38.1,5.0,small laceration without bleeding,4,synthetic_fallback
+50.0,Female,124.4,97.2,62.8,36.5,78.9,38.3,4.0,active hemorrhage after trauma,1,synthetic_fallback
+37.0,Male,127.7,113.8,75.1,24.4,96.8,37.1,6.0,high fever with confusion,2,synthetic_fallback
+31.0,Male,103.0,128.5,87.8,27.9,96.6,38.3,8.0,shortness of breath and tachycardia,2,synthetic_fallback
+47.0,Female,82.3,133.2,87.8,6.9,93.3,37.6,4.0,abdominal pain with vomiting,3,synthetic_fallback
+32.0,Male,81.6,123.6,74.0,20.7,99.2,37.4,6.0,chronic back pain stable,5,synthetic_fallback
+43.0,Female,124.1,83.7,55.0,23.1,90.1,38.0,5.0,chest pain radiating to left arm,2,synthetic_fallback
+55.0,Male,86.3,117.8,68.0,22.3,100.0,37.6,9.0,abdominal pain with vomiting,3,synthetic_fallback
+34.0,Male,101.0,101.6,58.1,22.0,100.0,37.9,2.0,administrative medical clearance,4,synthetic_fallback
+49.0,Male,147.9,112.0,71.0,31.1,92.4,36.2,3.0,syncope and dizziness,2,synthetic_fallback
+39.0,Male,90.0,151.9,93.6,20.8,90.4,34.2,7.0,headache and nausea,3,synthetic_fallback
+51.0,Male,76.1,112.7,68.5,22.2,100.0,37.6,3.0,ankle sprain from minor fall,5,synthetic_fallback
+54.0,Male,110.8,82.8,56.5,22.0,96.4,38.4,5.0,high fever with confusion,2,synthetic_fallback
+71.0,Female,95.3,126.6,79.2,19.7,90.7,37.5,6.0,syncope and dizziness,3,synthetic_fallback
+25.0,Male,82.0,135.6,80.6,13.4,92.6,37.0,1.0,medication refill request,5,synthetic_fallback
+53.0,Female,102.0,103.6,63.3,19.7,94.6,35.3,5.0,ankle sprain from minor fall,3,synthetic_fallback
+53.0,Male,90.9,130.2,84.1,12.4,100.0,35.6,0.0,chronic back pain stable,5,synthetic_fallback
+51.0,Female,69.6,111.1,55.6,14.4,98.8,37.1,7.0,chronic back pain stable,5,synthetic_fallback
+37.0,Female,101.3,132.2,83.5,22.4,93.4,36.6,6.0,moderate asthma exacerbation,3,synthetic_fallback
+44.0,Female,99.4,106.4,74.6,19.1,96.8,36.0,4.0,fever and cough for 3 days,3,synthetic_fallback
+66.0,Other,86.1,123.3,76.8,21.7,99.0,37.6,6.0,mild rash no respiratory symptoms,4,synthetic_fallback
+54.0,Female,88.5,128.3,80.4,16.7,96.8,37.0,3.0,ankle sprain from minor fall,4,synthetic_fallback
+24.0,Female,64.6,149.0,90.3,10.5,100.0,37.1,0.0,chronic back pain stable,5,synthetic_fallback
+28.0,Male,68.7,128.6,78.8,13.4,98.0,38.4,5.0,administrative medical clearance,5,synthetic_fallback
+38.0,Male,105.5,122.5,68.5,18.8,100.0,37.4,7.0,small laceration without bleeding,4,synthetic_fallback
+18.0,Female,68.9,109.8,65.8,10.9,99.7,36.9,2.0,chronic back pain stable,5,synthetic_fallback
+45.0,Female,82.0,105.1,69.1,19.9,91.8,38.5,4.0,abdominal pain with vomiting,3,synthetic_fallback
+71.0,Male,86.3,97.3,65.4,15.7,94.5,38.5,10.0,high fever with confusion,2,synthetic_fallback
+44.0,Male,91.0,167.2,111.0,19.5,93.8,37.4,1.0,mild allergic reaction,4,synthetic_fallback
+85.0,Female,98.4,112.3,61.4,12.9,88.8,35.7,7.0,syncope and dizziness,3,synthetic_fallback
+42.0,Male,118.0,104.6,71.5,18.5,90.4,40.0,6.0,shortness of breath and tachycardia,2,synthetic_fallback
+56.0,Female,92.7,107.7,70.1,29.3,93.3,36.0,5.0,syncope and dizziness,2,synthetic_fallback
+49.0,Male,107.3,85.9,47.8,15.8,93.4,37.7,2.0,chest pain radiating to left arm,2,synthetic_fallback
+18.0,Female,109.9,104.1,74.4,24.8,79.0,37.3,8.0,high fever with confusion,2,synthetic_fallback
+67.0,Female,82.8,129.4,84.1,14.9,95.7,36.7,5.0,mild allergic reaction,3,synthetic_fallback
+43.0,Female,79.4,156.0,89.0,15.6,93.4,37.1,7.0,medication refill request,5,synthetic_fallback
+45.0,Female,56.1,125.7,83.9,15.9,96.8,39.1,6.0,headache and nausea,3,synthetic_fallback
+37.0,Male,90.8,102.2,49.8,14.1,87.9,37.3,4.0,shortness of breath and tachycardia,2,synthetic_fallback
+38.0,Female,83.2,142.6,112.6,19.5,98.3,36.7,7.0,mild allergic reaction,4,synthetic_fallback
+34.0,Female,95.5,125.6,83.7,9.3,95.8,37.5,10.0,moderate asthma exacerbation,3,synthetic_fallback
+42.0,Female,54.5,110.5,65.9,14.2,97.8,36.2,3.0,mild rash no respiratory symptoms,5,synthetic_fallback
+54.0,Male,96.1,119.8,73.2,20.6,96.8,38.5,5.0,ankle sprain from minor fall,3,synthetic_fallback
+56.0,Female,113.9,112.7,59.3,24.0,92.4,36.0,6.0,fever and cough for 3 days,3,synthetic_fallback
+43.0,Female,93.2,118.5,49.5,14.6,93.8,38.8,6.0,small laceration without bleeding,4,synthetic_fallback
+37.0,Male,89.9,136.7,89.4,16.4,97.2,36.4,2.0,sore throat and low fever,4,synthetic_fallback
+70.0,Male,94.7,97.2,59.0,24.0,97.5,39.5,7.0,high fever with confusion,2,synthetic_fallback
+91.0,Female,90.6,122.7,74.7,19.8,98.3,36.3,3.0,small laceration without bleeding,3,synthetic_fallback
+48.0,Female,133.8,116.3,75.4,28.0,100.0,37.2,2.0,chest pain radiating to left arm,2,synthetic_fallback
+39.0,Female,71.9,118.4,83.5,13.1,96.7,37.2,3.0,ankle sprain from minor fall,4,synthetic_fallback
+69.0,Other,124.4,115.4,59.2,23.8,93.3,37.1,5.0,abdominal pain with vomiting,3,synthetic_fallback
+51.0,Female,73.1,124.4,69.6,22.7,100.0,38.5,6.0,small laceration without bleeding,4,synthetic_fallback
+61.0,Male,90.6,109.5,62.1,19.8,94.9,39.4,0.0,moderate asthma exacerbation,3,synthetic_fallback
+46.0,Female,66.9,121.8,78.2,21.3,95.7,37.1,7.0,sore throat and low fever,4,synthetic_fallback
+42.0,Female,124.1,55.0,43.8,29.6,100.0,38.2,8.0,possible stroke with slurred speech,2,synthetic_fallback
+14.0,Male,107.6,114.6,73.4,15.0,94.6,38.2,6.0,fever and cough for 3 days,3,synthetic_fallback
+62.0,Female,86.0,102.9,67.1,14.3,97.9,37.3,5.0,abdominal pain with vomiting,3,synthetic_fallback
+50.0,Female,100.2,121.5,72.3,14.5,96.5,37.8,3.0,mild allergic reaction,4,synthetic_fallback
+26.0,Male,87.2,104.9,73.3,15.2,97.6,38.6,5.0,mild rash no respiratory symptoms,4,synthetic_fallback
+29.0,Female,90.8,139.2,88.3,9.4,97.9,37.0,5.0,fever and cough for 3 days,3,synthetic_fallback
+69.0,Male,70.2,126.3,71.3,13.3,94.6,36.4,9.0,moderate asthma exacerbation,3,synthetic_fallback
+59.0,Male,115.2,109.9,68.2,35.4,93.1,38.5,7.0,shortness of breath and tachycardia,2,synthetic_fallback
+60.0,Male,75.2,142.3,95.9,20.0,99.1,37.3,6.0,headache and nausea,4,synthetic_fallback
+52.0,Female,73.5,156.5,92.2,13.6,99.1,37.3,1.0,administrative medical clearance,5,synthetic_fallback
+34.0,Male,108.6,101.2,61.1,15.9,95.7,35.2,6.0,small laceration without bleeding,4,synthetic_fallback
+49.0,Female,113.7,129.8,76.9,26.1,96.4,38.6,5.0,headache and nausea,3,synthetic_fallback
+46.0,Other,85.0,100.2,63.3,23.0,96.3,38.8,7.0,abdominal pain with vomiting,3,synthetic_fallback
+45.0,Female,85.9,88.7,58.4,27.0,98.1,37.3,8.0,abdominal pain with vomiting,3,synthetic_fallback
+65.0,Male,80.8,118.5,71.0,21.6,94.3,36.7,7.0,small laceration without bleeding,4,synthetic_fallback
+70.0,Female,76.0,113.2,60.2,12.3,96.4,38.8,9.0,small laceration without bleeding,4,synthetic_fallback
+94.0,Female,97.1,94.6,61.6,17.3,90.2,38.1,6.0,chest pain radiating to left arm,2,synthetic_fallback
+21.0,Male,99.4,118.0,73.1,28.5,95.9,40.2,4.0,high fever with confusion,2,synthetic_fallback
+26.0,Male,93.4,144.3,87.1,17.0,97.8,37.6,4.0,ankle sprain from minor fall,4,synthetic_fallback
+33.0,Male,95.3,131.9,85.3,11.2,99.8,38.1,7.0,sore throat and low fever,4,synthetic_fallback
+48.0,Female,66.3,132.3,85.4,19.9,100.0,36.2,4.0,chronic back pain stable,5,synthetic_fallback
+72.0,Female,120.1,101.1,63.8,26.5,97.2,37.5,6.0,fever and cough for 3 days,3,synthetic_fallback
+55.0,Other,62.2,115.3,64.9,13.7,100.0,37.4,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+27.0,Female,126.7,118.0,76.3,18.2,95.9,39.8,3.0,chest pain radiating to left arm,2,synthetic_fallback
+59.0,Male,127.0,91.6,48.9,16.6,94.1,37.2,5.0,small laceration without bleeding,3,synthetic_fallback
+52.0,Female,76.1,128.7,75.6,18.5,100.0,36.1,5.0,fever and cough for 3 days,3,synthetic_fallback
+63.0,Male,108.1,98.0,59.4,23.1,93.1,36.8,9.0,chest pain radiating to left arm,2,synthetic_fallback
+47.0,Female,60.8,163.1,98.8,15.9,99.3,36.3,4.0,administrative medical clearance,5,synthetic_fallback
+58.0,Male,73.1,143.9,81.0,17.3,98.9,36.7,2.0,administrative medical clearance,5,synthetic_fallback
+68.0,Female,75.5,99.1,51.3,9.9,97.3,37.3,5.0,headache and nausea,2,synthetic_fallback
+11.0,Female,70.8,134.0,85.0,13.0,98.4,35.4,4.0,medication refill request,5,synthetic_fallback
+49.0,Female,108.1,117.3,78.1,25.3,96.2,38.7,8.0,possible stroke with slurred speech,2,synthetic_fallback
+41.0,Female,101.1,115.2,68.2,22.1,93.5,36.8,4.0,abdominal pain with vomiting,3,synthetic_fallback
+10.0,Male,97.3,110.3,79.7,28.3,98.1,37.5,5.0,mild rash no respiratory symptoms,4,synthetic_fallback
+86.0,Male,81.1,145.5,85.4,15.2,97.5,35.3,4.0,mild allergic reaction,4,synthetic_fallback
+21.0,Male,70.3,161.0,96.4,15.7,97.3,37.5,5.0,medication refill request,5,synthetic_fallback
+76.0,Male,95.3,74.6,44.6,23.4,91.2,37.3,6.0,headache and nausea,3,synthetic_fallback
+15.0,Male,131.5,122.7,79.2,24.1,81.9,39.5,4.0,chest pain radiating to left arm,2,synthetic_fallback
+28.0,Female,90.6,113.3,73.0,22.5,91.9,39.3,6.0,moderate asthma exacerbation,3,synthetic_fallback
+42.0,Male,72.5,107.0,71.0,21.3,98.9,38.0,4.0,sore throat and low fever,4,synthetic_fallback
+28.0,Male,107.4,131.5,82.6,18.5,93.4,36.4,7.0,headache and nausea,3,synthetic_fallback
+75.0,Female,108.4,99.3,64.0,23.3,99.5,37.8,5.0,headache and nausea,3,synthetic_fallback
+56.0,Female,64.3,132.2,79.4,20.4,92.2,38.8,4.0,fever and cough for 3 days,3,synthetic_fallback
+30.0,Female,70.8,110.6,73.1,15.2,97.5,36.6,3.0,administrative medical clearance,5,synthetic_fallback
+31.0,Female,133.4,87.7,68.4,30.4,84.9,39.0,5.0,shortness of breath and tachycardia,2,synthetic_fallback
+50.0,Female,91.7,104.6,73.4,19.0,97.2,36.5,6.0,small laceration without bleeding,4,synthetic_fallback
+20.0,Other,56.1,115.3,79.3,15.0,100.0,37.8,2.0,ankle sprain from minor fall,4,synthetic_fallback
+66.0,Male,66.2,129.0,76.4,16.0,88.5,38.9,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+57.0,Female,66.4,116.6,73.8,15.0,100.0,35.8,5.0,sore throat and low fever,4,synthetic_fallback
+51.0,Male,93.6,118.5,73.4,18.1,96.2,37.5,5.0,ankle sprain from minor fall,4,synthetic_fallback
+78.0,Male,73.4,105.1,60.1,16.7,97.1,36.8,7.0,sore throat and low fever,4,synthetic_fallback
+67.0,Female,88.5,167.4,107.1,14.6,95.9,36.4,5.0,medication refill request,5,synthetic_fallback
+41.0,Female,105.8,125.6,80.6,16.8,98.2,37.4,2.0,fever and cough for 3 days,3,synthetic_fallback
+19.0,Other,91.2,128.6,90.5,14.9,92.1,35.1,0.0,fever and cough for 3 days,3,synthetic_fallback
+78.0,Female,86.3,121.4,86.1,14.6,98.0,37.6,2.0,medication refill request,5,synthetic_fallback
+51.0,Male,72.2,109.6,68.2,13.5,100.0,38.1,4.0,ankle sprain from minor fall,4,synthetic_fallback
+26.0,Male,78.3,112.4,73.4,13.6,99.6,37.3,1.0,chronic back pain stable,5,synthetic_fallback
+26.0,Male,92.3,86.7,50.2,22.8,95.2,37.3,4.0,syncope and dizziness,2,synthetic_fallback
+94.0,Male,124.8,66.1,45.6,35.5,88.4,38.4,9.0,active hemorrhage after trauma,1,synthetic_fallback
+34.0,Male,119.9,99.0,59.6,24.0,85.0,39.6,9.0,shortness of breath and tachycardia,2,synthetic_fallback
+37.0,Female,90.4,156.4,102.2,18.3,95.9,36.8,7.0,mild allergic reaction,3,synthetic_fallback
+37.0,Female,53.5,135.2,93.1,20.6,94.9,37.1,4.0,small laceration without bleeding,4,synthetic_fallback
+16.0,Male,88.4,139.5,86.4,15.2,95.8,37.1,5.0,sore throat and low fever,4,synthetic_fallback
+58.0,Female,62.8,128.4,73.4,12.1,94.6,38.2,5.0,sore throat and low fever,4,synthetic_fallback
+67.0,Male,74.5,159.7,100.3,13.2,100.0,37.3,0.0,administrative medical clearance,5,synthetic_fallback
+95.0,Male,75.4,135.3,73.4,20.6,93.1,37.2,6.0,fever and cough for 3 days,3,synthetic_fallback
+57.0,Male,112.2,109.0,69.6,23.5,92.4,37.1,4.0,abdominal pain with vomiting,3,synthetic_fallback
+14.0,Male,89.2,113.7,80.0,16.9,95.0,37.3,4.0,headache and nausea,3,synthetic_fallback
+50.0,Female,93.5,97.2,51.8,18.3,96.5,36.2,4.0,fever and cough for 3 days,3,synthetic_fallback
+59.0,Male,102.8,102.8,62.9,18.5,99.3,38.6,3.0,moderate asthma exacerbation,3,synthetic_fallback
+73.0,Female,135.2,89.9,62.1,20.8,91.7,38.5,7.0,moderate asthma exacerbation,2,synthetic_fallback
+73.0,Female,118.7,88.2,59.0,26.3,90.6,40.3,9.0,syncope and dizziness,2,synthetic_fallback
+70.0,Male,104.3,131.5,85.0,19.3,94.5,38.0,7.0,moderate asthma exacerbation,3,synthetic_fallback
+11.0,Female,83.5,96.0,50.3,25.7,95.2,37.9,3.0,active hemorrhage after trauma,2,synthetic_fallback
+75.0,Male,89.5,113.1,70.6,18.3,89.7,36.9,5.0,fever and cough for 3 days,3,synthetic_fallback
+57.0,Other,92.0,122.6,83.1,18.6,95.9,39.3,5.0,fever and cough for 3 days,3,synthetic_fallback
+24.0,Male,117.4,118.7,81.2,19.7,95.9,36.7,3.0,headache and nausea,3,synthetic_fallback
+50.0,Female,81.3,120.9,77.5,15.1,94.0,36.2,6.0,abdominal pain with vomiting,3,synthetic_fallback
+60.0,Male,107.1,141.2,91.3,19.8,96.4,37.1,3.0,small laceration without bleeding,4,synthetic_fallback
+49.0,Male,93.8,89.3,65.6,18.8,84.5,38.4,8.0,syncope and dizziness,2,synthetic_fallback
+38.0,Female,97.2,102.0,61.3,18.5,95.0,36.2,4.0,fever and cough for 3 days,3,synthetic_fallback
+52.0,Male,107.6,109.0,66.8,18.4,100.0,36.9,4.0,abdominal pain with vomiting,3,synthetic_fallback
+51.0,Male,92.4,119.0,78.3,13.8,100.0,37.9,4.0,chronic back pain stable,5,synthetic_fallback
+62.0,Female,63.4,131.3,84.1,15.4,92.5,36.9,4.0,mild rash no respiratory symptoms,5,synthetic_fallback
+51.0,Female,91.7,155.8,99.4,18.9,98.6,37.7,1.0,small laceration without bleeding,4,synthetic_fallback
+44.0,Male,88.9,162.4,92.3,17.8,94.8,37.5,3.0,sore throat and low fever,4,synthetic_fallback
+79.0,Male,66.7,118.5,73.4,19.8,94.9,36.2,4.0,small laceration without bleeding,4,synthetic_fallback
+37.0,Male,93.1,102.9,52.7,27.0,91.1,36.8,7.0,fever and cough for 3 days,2,synthetic_fallback
+30.0,Male,87.5,126.6,70.5,14.1,99.0,35.9,3.0,chronic back pain stable,5,synthetic_fallback
+57.0,Female,104.2,87.0,49.8,14.6,100.0,36.5,7.0,abdominal pain with vomiting,3,synthetic_fallback
+16.0,Male,132.2,88.8,38.8,12.8,87.2,36.8,9.0,high fever with confusion,2,synthetic_fallback
+48.0,Female,61.3,118.5,72.9,14.2,98.8,37.0,2.0,medication refill request,5,synthetic_fallback
+9.0,Male,90.6,121.4,79.6,18.5,90.9,36.2,8.0,moderate asthma exacerbation,3,synthetic_fallback
+57.0,Male,106.7,129.6,81.9,15.4,99.2,36.7,6.0,headache and nausea,3,synthetic_fallback
+60.0,Female,58.7,117.0,77.1,18.4,97.4,38.2,8.0,mild allergic reaction,4,synthetic_fallback
+72.0,Female,96.5,124.5,73.8,18.3,96.5,36.5,5.0,sore throat and low fever,4,synthetic_fallback
+56.0,Male,91.6,121.8,81.2,16.3,100.0,36.4,4.0,sore throat and low fever,4,synthetic_fallback
+50.0,Male,99.2,116.4,73.3,20.1,97.1,38.5,7.0,headache and nausea,4,synthetic_fallback
+38.0,Female,109.7,127.3,80.1,16.8,97.9,39.0,2.0,mild allergic reaction,4,synthetic_fallback
+14.0,Male,95.1,106.0,65.9,25.7,100.0,39.4,8.0,abdominal pain with vomiting,3,synthetic_fallback
+34.0,Female,100.6,152.9,84.0,21.5,94.4,37.3,5.0,small laceration without bleeding,4,synthetic_fallback
+51.0,Other,81.1,109.4,85.6,22.0,87.9,38.0,5.0,shortness of breath and tachycardia,3,synthetic_fallback
+50.0,Male,115.4,125.4,84.0,18.1,93.5,36.0,4.0,abdominal pain with vomiting,3,synthetic_fallback
+49.0,Female,91.1,117.6,71.2,14.9,97.0,37.3,6.0,abdominal pain with vomiting,3,synthetic_fallback
+30.0,Male,76.0,110.5,80.0,20.6,97.9,37.6,7.0,syncope and dizziness,2,synthetic_fallback
+36.0,Female,90.1,118.8,75.1,16.9,91.2,36.4,5.0,small laceration without bleeding,3,synthetic_fallback
+63.0,Male,80.8,124.8,74.4,22.4,91.6,37.3,1.0,headache and nausea,3,synthetic_fallback

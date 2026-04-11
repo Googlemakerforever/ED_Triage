@@ -1,0 +1,230 @@
+{
+  "primary_model": "xgboost_fallback",
+  "dataset_summary": {
+    "total_rows": 800,
+    "class_distribution": {
+      "1": 17,
+      "2": 137,
+      "3": 263,
+      "4": 240,
+      "5": 143
+    },
+    "train_distribution_after_oversampling": {
+      "1": 210,
+      "2": 210,
+      "3": 210,
+      "4": 192,
+      "5": 114
+    },
+    "sources": {
+      "synthetic_fallback": 800
+    }
+  },
+  "best_model_metrics": {
+    "accuracy": 0.88125,
+    "f1_weighted": 0.8809121070001737,
+    "recall_level1": 0.6666666666666666,
+    "auroc_ovr_weighted": 0.9526289664291886,
+    "confusion_matrix": [
+      [
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        26,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        44,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        43,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        26
+      ]
+    ]
+  },
+  "hybrid_metrics": {
+    "accuracy": 0.5125,
+    "f1_weighted": 0.5714889074340295,
+    "recall_level1": 1.0
+  },
+  "requirements_check": {
+    "level1_recall_target": 0.95,
+    "level1_recall_actual": 1.0,
+    "level1_recall_passed": true
+  },
+  "models": [
+    {
+      "accuracy": 0.8375,
+      "f1_weighted": 0.8396474139895191,
+      "recall_level1": 0.3333333333333333,
+      "auroc_ovr_weighted": 0.9626839776109847,
+      "confusion_matrix": [
+        [
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          23,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          42,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          42,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          26
+        ]
+      ],
+      "model": "logistic_regression",
+      "best_params": {
+        "clf__C": 2.0
+      }
+    },
+    {
+      "accuracy": 0.875,
+      "f1_weighted": 0.8745189806412583,
+      "recall_level1": 0.6666666666666666,
+      "auroc_ovr_weighted": 0.958072113773715,
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          43,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          43,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          26
+        ]
+      ],
+      "model": "random_forest",
+      "best_params": {
+        "clf__max_depth": null,
+        "clf__min_samples_leaf": 1,
+        "clf__n_estimators": 450
+      }
+    },
+    {
+      "accuracy": 0.88125,
+      "f1_weighted": 0.8809121070001737,
+      "recall_level1": 0.6666666666666666,
+      "auroc_ovr_weighted": 0.9526289664291886,
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          44,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          43,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          26
+        ]
+      ],
+      "model": "xgboost_fallback",
+      "best_params": {
+        "clf__max_depth": null,
+        "clf__min_samples_leaf": 1,
+        "clf__n_estimators": 450
+      }
+    }
+  ],
+  "artifact_paths": {
+    "best_model": "/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/artifacts/best_model.joblib",
+    "predictions": "/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/artifacts/test_predictions.csv",
+    "comparison_plot": "",
+    "calibration_plot": "",
+    "global_feature_importance": "/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/artifacts/global_feature_importance.csv"
+  }
+}
