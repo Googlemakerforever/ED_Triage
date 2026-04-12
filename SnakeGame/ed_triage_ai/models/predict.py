@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from argparse import Namespace
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List
@@ -10,9 +9,11 @@ from typing import Dict, List
 import joblib
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
 
-from ed_triage_ai.data.preprocess import enrich_features
-from ed_triage_ai.models.train import train
+from ed_triage_ai.data.loaders import load_and_merge_datasets
+from ed_triage_ai.data.preprocess import build_preprocessor, enrich_features, split_xy
 from ed_triage_ai.rules.clinical_rules import apply_clinical_rules, validate_required_test_case
 from ed_triage_ai.utils.config import (
     DEFAULT_MODEL_PATH,
@@ -60,20 +61,36 @@ class TriagePredictor:
             return joblib.load(model_path)
         except Exception:
             # Cloud runtimes can fail to unpickle locally-built artifacts due to
-            # Python/sklearn version differences. Rebuild a compatible model on startup.
-            train(
-                Namespace(
-                    data_path="",
-                    mimic_path="",
-                    eicu_path="",
-                    kaggle_paths=[],
-                    n_samples=1200,
-                    cv_folds=2,
-                    seed=42,
-                    skip_plots=True,
-                )
+            # Python/sklearn version differences. Rebuild a minimal compatible
+            # pipeline directly instead of invoking the full grid-search trainer.
+            df = load_and_merge_datasets(
+                mimic_path="",
+                eicu_path="",
+                kaggle_paths=[],
+                synthetic_fallback_n=1200,
+                random_state=42,
             )
-            return joblib.load(model_path)
+            X, y = split_xy(df)
+            pipeline = Pipeline(
+                steps=[
+                    ("preprocessor", build_preprocessor()),
+                    (
+                        "clf",
+                        RandomForestClassifier(
+                            n_estimators=180,
+                            max_depth=10,
+                            min_samples_leaf=2,
+                            random_state=42,
+                            n_jobs=1,
+                            class_weight="balanced",
+                        ),
+                    ),
+                ]
+            )
+            pipeline.fit(X, y)
+            model_path.parent.mkdir(parents=True, exist_ok=True)
+            joblib.dump(pipeline, model_path)
+            return pipeline
 
     @staticmethod
     def _risk_category(risk_score: float) -> str:
