@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from argparse import Namespace
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Dict, List
 
 import joblib
@@ -10,6 +12,7 @@ import numpy as np
 import pandas as pd
 
 from ed_triage_ai.data.preprocess import enrich_features
+from ed_triage_ai.models.train import train
 from ed_triage_ai.rules.clinical_rules import apply_clinical_rules, validate_required_test_case
 from ed_triage_ai.utils.config import (
     DEFAULT_MODEL_PATH,
@@ -33,7 +36,7 @@ class PredictionOutput:
 class TriagePredictor:
     def __init__(self, model_path: str | None = None):
         validate_required_test_case()
-        self.model = joblib.load(model_path or DEFAULT_MODEL_PATH)
+        self.model = self._load_or_rebuild_model(model_path or DEFAULT_MODEL_PATH)
         self._shap_explainer = None
         self._shap_available = False
 
@@ -49,6 +52,28 @@ class TriagePredictor:
                 self._shap_available = True
         except Exception:
             self._shap_available = False
+
+    @staticmethod
+    def _load_or_rebuild_model(model_path: str | Path):
+        model_path = Path(model_path)
+        try:
+            return joblib.load(model_path)
+        except Exception:
+            # Cloud runtimes can fail to unpickle locally-built artifacts due to
+            # Python/sklearn version differences. Rebuild a compatible model on startup.
+            train(
+                Namespace(
+                    data_path="",
+                    mimic_path="",
+                    eicu_path="",
+                    kaggle_paths=[],
+                    n_samples=1200,
+                    cv_folds=2,
+                    seed=42,
+                    skip_plots=True,
+                )
+            )
+            return joblib.load(model_path)
 
     @staticmethod
     def _risk_category(risk_score: float) -> str:

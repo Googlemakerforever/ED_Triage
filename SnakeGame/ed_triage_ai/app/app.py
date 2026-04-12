@@ -31,7 +31,13 @@ if not model_path.exists():
     st.error("Model artifact not found. Train first: `python -m ed_triage_ai.models.train`")
     st.stop()
 
-predictor = TriagePredictor(str(model_path))
+
+@st.cache_resource
+def load_predictor() -> TriagePredictor:
+    return TriagePredictor(str(model_path))
+
+
+predictor = load_predictor()
 
 col1, col2 = st.columns(2)
 
