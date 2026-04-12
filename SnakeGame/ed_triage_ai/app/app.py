@@ -159,9 +159,8 @@ if st.button("Predict Triage", type="primary"):
         st.warning("Clinical safety override triggered.")
         for reason in result.override_reasons:
             st.write(f"- {reason}")
-
-    st.subheader("Decision Source")
-    st.write(result.prediction_source)
+        st.subheader("Decision Source")
+        st.write(result.prediction_source)
 
     if ai_summary:
         st.subheader("AI Clinical Summary")
