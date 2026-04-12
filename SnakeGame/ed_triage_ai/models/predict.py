@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import joblib
 import numpy as np
@@ -33,9 +33,12 @@ class PredictionOutput:
     risk_score: float
     risk_category: str
     explanation: List[str]
+    reason: str
     prediction_source: str
     override_triggered: bool
     override_reasons: List[str]
+    matched_rules: List[str]
+    audit: Dict[str, Any]
 
 
 class TriagePredictor:
@@ -184,9 +187,12 @@ class TriagePredictor:
                 risk_score=float(risk_score),
                 risk_category=self._risk_category(float(risk_score)),
                 explanation=[rule_result.explanation],
+                reason=rule_result.explanation,
                 prediction_source=rule_result.source,
-                override_triggered=rule_result.source == "trauma_override",
+                override_triggered=rule_result.source in {"hard_override", "uncertainty_escalation", "validation_error"},
                 override_reasons=[rule_result.explanation],
+                matched_rules=list(rule_result.matched_rules),
+                audit=dict(rule_result.audit),
             )
 
         row = pd.DataFrame([patient])
@@ -211,7 +217,14 @@ class TriagePredictor:
             risk_score=risk_score,
             risk_category=self._risk_category(risk_score),
             explanation=explanation,
+            reason=explanation[0],
             prediction_source="ml prediction",
             override_triggered=False,
             override_reasons=[],
+            matched_rules=[],
+            audit={
+                "normalized_complaint": str(patient.get("chief_complaint", "")).lower().strip(),
+                "matched_keyword_categories": [],
+                "abnormal_vitals_summary": [],
+            },
         )
