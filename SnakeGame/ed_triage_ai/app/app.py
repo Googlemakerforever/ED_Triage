@@ -22,14 +22,11 @@ st.title("Emergency Department Triage AI Assistant")
 st.caption("Educational clinical decision support prototype. Not for direct patient care.")
 
 if ai_summary_available():
-    st.info("AI narrative summaries are enabled for this deployment.")
+    st.info("AI narrative summaries are enabled.")
 else:
-    st.warning("AI summary is not configured. Set `OPENROUTER_API_KEY` or `OPENAI_API_KEY` in secrets.")
+    st.caption("Optional AI summaries are unavailable until `OPENROUTER_API_KEY` or `OPENAI_API_KEY` is configured.")
 
 model_path = Path(DEFAULT_MODEL_PATH)
-if not model_path.exists():
-    st.error("Model artifact not found. Train first: `python -m ed_triage_ai.models.train`")
-    st.stop()
 
 
 @st.cache_resource

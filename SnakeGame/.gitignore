@@ -3,3 +3,6 @@
 .env
 __pycache__/
 *.pyc
+ed_triage_ai/artifacts/*
+!ed_triage_ai/artifacts/.gitkeep
+ed_triage_ai/data/synthetic_ed_triage.csv
