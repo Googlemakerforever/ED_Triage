@@ -14,7 +14,11 @@ from sklearn.pipeline import Pipeline
 
 from ed_triage_ai.data.loaders import load_and_merge_datasets
 from ed_triage_ai.data.preprocess import build_preprocessor, enrich_features, split_xy
-from ed_triage_ai.rules.clinical_rules import apply_clinical_rules, validate_required_test_case
+from ed_triage_ai.rules.clinical_rules import (
+    apply_clinical_rules,
+    validate_required_test_case,
+    validate_trauma_override_cases,
+)
 from ed_triage_ai.utils.config import (
     DEFAULT_MODEL_PATH,
     HIGH_ACUITY_LEVELS,
@@ -37,6 +41,7 @@ class PredictionOutput:
 class TriagePredictor:
     def __init__(self, model_path: str | None = None):
         validate_required_test_case()
+        validate_trauma_override_cases()
         self.model = self._load_or_rebuild_model(model_path or DEFAULT_MODEL_PATH)
         self._shap_explainer = None
         self._shap_available = False
@@ -179,8 +184,8 @@ class TriagePredictor:
                 risk_score=float(risk_score),
                 risk_category=self._risk_category(float(risk_score)),
                 explanation=[rule_result.explanation],
-                prediction_source="rule-based override",
-                override_triggered=True,
+                prediction_source=rule_result.source,
+                override_triggered=rule_result.source == "trauma_override",
                 override_reasons=[rule_result.explanation],
             )
 
