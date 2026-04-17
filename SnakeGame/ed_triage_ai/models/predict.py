@@ -19,6 +19,7 @@ from ed_triage_ai.rules.clinical_rules import (
     validate_required_test_case,
     validate_trauma_override_cases,
 )
+from ed_triage_ai.triage.hybrid_engine import HybridTriageEngine
 from ed_triage_ai.utils.config import (
     DEFAULT_MODEL_PATH,
     HIGH_ACUITY_LEVELS,
@@ -46,6 +47,7 @@ class TriagePredictor:
         validate_required_test_case()
         validate_trauma_override_cases()
         self.model = self._load_or_rebuild_model(model_path or DEFAULT_MODEL_PATH)
+        self.hybrid_engine = HybridTriageEngine(self.model)
         self._shap_explainer = None
         self._shap_available = False
 
@@ -172,8 +174,8 @@ class TriagePredictor:
         return out
 
     def predict(self, patient: Dict[str, float]) -> PredictionOutput:
-        rule_result = apply_clinical_rules(patient)
-        if rule_result is not None:
+        decision = self.hybrid_engine.run(patient)
+        if decision["source"] != "ml_prediction":
             level_to_risk = {
                 1: 0.98,
                 2: 0.82,
@@ -181,25 +183,28 @@ class TriagePredictor:
                 4: 0.22,
                 5: 0.06,
             }
-            risk_score = level_to_risk[int(rule_result.triage_level)]
+            risk_score = level_to_risk[int(decision["level"])]
             return PredictionOutput(
-                triage_level=int(rule_result.triage_level),
+                triage_level=int(decision["level"]),
                 risk_score=float(risk_score),
                 risk_category=self._risk_category(float(risk_score)),
-                explanation=[rule_result.explanation],
-                reason=rule_result.explanation,
-                prediction_source=rule_result.source,
-                override_triggered=rule_result.source in {"hard_override", "uncertainty_escalation", "validation_error"},
-                override_reasons=[rule_result.explanation],
-                matched_rules=list(rule_result.matched_rules),
-                audit=dict(rule_result.audit),
+                explanation=[str(decision["reason"])],
+                reason=str(decision["reason"]),
+                prediction_source=str(decision["source"]),
+                override_triggered=str(decision["source"]) in {"hard_override", "uncertainty_escalation", "validation_error"},
+                override_reasons=[str(decision["reason"])],
+                matched_rules=list(decision.get("matched_rules", [])),
+                audit=dict(decision.get("audit", {})),
             )
 
-        row = pd.DataFrame([patient])
+        normalized_patient = dict(patient)
+        normalized_patient["chief_complaint"] = decision["audit"]["normalized_complaint"]
+        row = pd.DataFrame([normalized_patient])
         enriched = self._align_features_for_model(enrich_features(row))
-        pred_level = int(self.model.predict(enriched)[0])
-        proba = self.model.predict_proba(enriched)[0]
-        classes = np.array(self.model.named_steps["clf"].classes_)
+        pred_level = int(decision["level"])
+        proba_map = decision["audit"].get("ml_probabilities", {})
+        classes = np.array(sorted(int(label) for label in proba_map))
+        proba = np.array([float(proba_map[str(label)]) for label in classes])
 
         high_mask = np.isin(classes, list(HIGH_ACUITY_LEVELS))
         risk_score = float(proba[high_mask].sum())
@@ -211,20 +216,18 @@ class TriagePredictor:
                 explanation = self._heuristic_explanations(patient, risk_score)
         else:
             explanation = self._heuristic_explanations(patient, risk_score)
+        if decision["reason"] not in explanation:
+            explanation = [str(decision["reason"]), *explanation][:3]
 
         return PredictionOutput(
             triage_level=pred_level,
             risk_score=risk_score,
             risk_category=self._risk_category(risk_score),
             explanation=explanation,
-            reason=explanation[0],
-            prediction_source="ml prediction",
+            reason=str(decision["reason"]),
+            prediction_source="ml_prediction",
             override_triggered=False,
             override_reasons=[],
-            matched_rules=[],
-            audit={
-                "normalized_complaint": str(patient.get("chief_complaint", "")).lower().strip(),
-                "matched_keyword_categories": [],
-                "abnormal_vitals_summary": [],
-            },
+            matched_rules=list(decision.get("matched_rules", [])),
+            audit=dict(decision.get("audit", {})),
         )
