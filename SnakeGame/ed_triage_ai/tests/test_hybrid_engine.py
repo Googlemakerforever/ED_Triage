@@ -130,6 +130,25 @@ class HybridEngineTests(unittest.TestCase):
         self.assertEqual(result.prediction_source, "hard_override")
         self.assertIn("L2_OPEN_FRACTURE", result.matched_rules)
 
+    def test_regression_head_injury_with_transient_loc_and_normal_vitals(self):
+        result = self.predictor.predict(
+            {
+                "age": 54,
+                "sex": "Male",
+                "heart_rate": 92,
+                "respiratory_rate": 18,
+                "oxygen_saturation": 98,
+                "temperature": 36.9,
+                "systolic_bp": 124,
+                "diastolic_bp": 78,
+                "pain_score": 3,
+                "chief_complaint": "fell down stairs, hit head, briefly passed out, now feels okay but has mild headache",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertEqual(result.prediction_source, "hard_override")
+        self.assertIn("L2_HEAD_INJURY_RED_FLAGS", result.matched_rules)
+
 
 if __name__ == "__main__":
     unittest.main()

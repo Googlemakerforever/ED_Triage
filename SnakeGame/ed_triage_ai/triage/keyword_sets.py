@@ -86,7 +86,7 @@ FEATURE_ALIASES = {
     "open_injury": ["open fracture", "compound fracture", "bone exposed", "protruding bone", "open wound"],
     "deformity": ["deformity", "angulated", "crooked"],
     "neurovascular_compromise": ["absent distal pulse", "no distal pulse", "cold limb", "cyanotic limb", "ischemic limb", "numbness distal", "weakness distal"],
-    "dangerous_mechanism": ["high speed collision", "high-speed collision", "rollover", "ejection", "pedestrian struck", "motorcycle crash", "fall from height", "industrial accident", "gunshot wound", "stab wound"],
+    "dangerous_mechanism": ["high speed collision", "high-speed collision", "rollover", "ejection", "pedestrian struck", "motorcycle crash", "fall from height", "fell down stairs", "down stairs", "stair fall", "industrial accident", "gunshot wound", "stab wound"],
     "severe_bleeding": ["massive bleeding", "bleeding out", "exsanguinating hemorrhage", "heavy bleeding"],
     "severe_abdominal_pain": ["severe abdominal pain", "abdominal pain", "pelvic pain"],
     "pregnancy_related": ["pregnant", "pregnancy", "postpartum", "vaginal bleeding pregnant"],
