@@ -15,13 +15,14 @@ def combine_with_safety_floor(
     ml_probabilities: Optional[Dict[str, float]],
 ) -> RuleDict:
     if hard_override is not None:
-        return {**hard_override, "ml_probabilities": ml_probabilities or {}}
+        return {**hard_override, "ml_probabilities": ml_probabilities or {}, "safety_floor_reason": None}
 
     if ml_level is None:
-        return {**(safety_floor or {"level": 3, "reason": "No confident path was available.", "matched_rules": ["FALLBACK_NO_PATH"], "source": "uncertainty_escalation"}), "ml_probabilities": ml_probabilities or {}}
+        baseline = safety_floor or {"level": 3, "reason": "No confident path was available.", "matched_rules": ["FALLBACK_NO_PATH"], "source": "uncertainty_escalation"}
+        return {**baseline, "ml_probabilities": ml_probabilities or {}, "safety_floor_reason": baseline.get("reason")}
 
     if safety_floor is not None and ml_level > int(safety_floor["level"]):
-        return {**safety_floor, "ml_probabilities": ml_probabilities or {}}
+        return {**safety_floor, "ml_probabilities": ml_probabilities or {}, "safety_floor_reason": safety_floor.get("reason")}
 
     if safety_floor is not None and ml_level < int(safety_floor["level"]):
         return {
@@ -30,6 +31,7 @@ def combine_with_safety_floor(
             "matched_rules": ["ML_ESCALATED_ABOVE_FLOOR"],
             "source": "ml_prediction",
             "ml_probabilities": ml_probabilities or {},
+            "safety_floor_reason": safety_floor.get("reason"),
         }
 
     return {
@@ -38,4 +40,5 @@ def combine_with_safety_floor(
         "matched_rules": ["ML_GRAY_ZONE"],
         "source": "ml_prediction",
         "ml_probabilities": ml_probabilities or {},
+        "safety_floor_reason": None,
     }

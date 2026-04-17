@@ -23,5 +23,8 @@ def finalize_decision(
             "extracted_features": extracted_features,
             "derived_features": derived_features,
             "ml_probabilities": decision.get("ml_probabilities", {}),
+            "critical_flags": extracted_features.get("context", {}).get("critical_flags", {}),
+            "semantic_matches": extracted_features.get("context", {}).get("semantic_matches", {}),
+            "safety_floor_reason": decision.get("safety_floor_reason"),
         },
     }

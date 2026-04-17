@@ -11,9 +11,26 @@ RuleDict = Dict[str, Any]
 def compute_safety_floor(payload: Dict[str, Any], extracted: Dict[str, Any], derived: Dict[str, Any]) -> Optional[RuleDict]:
     features = extracted.get("features", {})
     context = extracted.get("context", {})
+    critical_flags = context.get("critical_flags", {})
     confidence = float(context.get("confidence", 0.5) or 0.5)
     ambiguity_flags = list(context.get("ambiguity_flags", []))
     temporal_modifiers = list(context.get("temporal_modifiers", []))
+
+    if critical_flags.get("semantic_loc"):
+        return {
+            "level": 2,
+            "reason": "Semantic loss-of-consciousness event requires a non-negotiable safety floor.",
+            "matched_rules": ["UNC_SEMANTIC_LOC"],
+            "source": "uncertainty_escalation",
+        }
+
+    if critical_flags.get("semantic_stroke"):
+        return {
+            "level": 2,
+            "reason": "Semantic transient neurologic symptoms require a non-negotiable safety floor.",
+            "matched_rules": ["UNC_SEMANTIC_STROKE"],
+            "source": "uncertainty_escalation",
+        }
 
     concerning_features = [
         name

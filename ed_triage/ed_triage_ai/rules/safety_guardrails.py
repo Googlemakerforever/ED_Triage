@@ -13,6 +13,8 @@ from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
+from ed_triage_ai.triage.normalize_complaint import extract_critical_flags
+
 
 VALID_RANGES = {
     "age": (0, 120),
@@ -299,6 +301,8 @@ class SafetyContext:
     temporal_modifiers: List[str]
     abnormal_vitals: List[str]
     severe_abnormal_vitals: List[str]
+    critical_flags: Dict[str, bool]
+    semantic_matches: Dict[str, List[str]]
 
 
 def normalize_complaint(text: str) -> str:
@@ -507,6 +511,7 @@ def _build_context(input_data: Dict[str, Any]) -> SafetyContext:
     complaint = normalize_complaint(str(input_data.get("chief_complaint", "")))
     matched_categories = _detect_categories(input_data, complaint)
     abnormal_vitals, severe_abnormal_vitals = _summarize_vitals(input_data)
+    critical = extract_critical_flags(complaint)
     return SafetyContext(
         payload=input_data,
         normalized_complaint=complaint,
@@ -515,6 +520,8 @@ def _build_context(input_data: Dict[str, Any]) -> SafetyContext:
         temporal_modifiers=_collect_temporal_modifiers(complaint),
         abnormal_vitals=abnormal_vitals,
         severe_abnormal_vitals=severe_abnormal_vitals,
+        critical_flags={name: bool(meta["flag"]) for name, meta in critical.items()},
+        semantic_matches={name: list(meta["matches"]) for name, meta in critical.items() if meta["matches"]},
     )
 
 
@@ -525,6 +532,8 @@ def _audit_dict(ctx: SafetyContext) -> Dict[str, Any]:
         "abnormal_vitals_summary": ctx.abnormal_vitals,
         "negated_terms": ctx.negated_terms,
         "temporal_modifiers": ctx.temporal_modifiers,
+        "critical_flags": ctx.critical_flags,
+        "semantic_matches": ctx.semantic_matches,
     }
 
 
@@ -585,6 +594,8 @@ def _level_1_overrides(ctx: SafetyContext) -> Optional[RuleResult]:
     spo2 = _safe_float(ctx.payload, "oxygen_saturation")
     sbp = _safe_float(ctx.payload, "systolic_bp")
 
+    if ctx.critical_flags.get("semantic_airway_compromise"):
+        return _result(1, "Level 1 assigned for semantic airway-compromise detection.", "hard_override", ["L1_SEMANTIC_AIRWAY"], ctx)
     if _find_phrase_matches(complaint, ["not breathing", "apnea", "apneic"]):
         return _result(1, "Level 1 assigned for absent or ineffective breathing.", "hard_override", ["L1_APNEA"], ctx)
     if _find_phrase_matches(complaint, ["pulseless", "no pulse", "without pulse"]):
@@ -607,6 +618,8 @@ def _level_1_overrides(ctx: SafetyContext) -> Optional[RuleResult]:
         return _result(1, "Level 1 assigned for ongoing seizure activity.", "hard_override", ["L1_ACTIVE_SEIZURE"], ctx)
     if _has(ctx, "neurologic_emergency") and _find_phrase_matches(complaint, ["profoundly confused", "obtunded", "severely altered"]):
         return _result(1, "Level 1 assigned for critical altered mental status.", "hard_override", ["L1_CRITICAL_AMS"], ctx)
+    if ctx.critical_flags.get("semantic_severe_trauma") and ctx.severe_abnormal_vitals:
+        return _result(1, "Level 1 assigned for semantic severe trauma with instability.", "hard_override", ["L1_SEMANTIC_TRAUMA_INSTABILITY"], ctx)
     if _has_any(ctx, ["trauma_mechanism", "fracture_deformity_open_injury"]) and ctx.severe_abnormal_vitals:
         return _result(1, "Level 1 assigned for major trauma with profound instability.", "hard_override", ["L1_MAJOR_TRAUMA_UNSTABLE"], ctx)
     if _requires_immediate_intervention(ctx):
@@ -621,6 +634,12 @@ def _level_2_overrides(ctx: SafetyContext) -> Optional[RuleResult]:
     hr = _safe_float(ctx.payload, "heart_rate")
     rr = _safe_float(ctx.payload, "respiratory_rate")
 
+    if ctx.critical_flags.get("semantic_head_injury_red_flags"):
+        return _result(2, "Level 2 assigned for semantic head-injury red flags.", "hard_override", ["L2_SEMANTIC_HEAD_INJURY"], ctx)
+    if ctx.critical_flags.get("semantic_loc"):
+        return _result(2, "Level 2 assigned for semantic loss-of-consciousness detection.", "hard_override", ["L2_SEMANTIC_LOC"], ctx)
+    if ctx.critical_flags.get("semantic_stroke"):
+        return _result(2, "Level 2 assigned for semantic stroke-like complaint.", "hard_override", ["L2_SEMANTIC_STROKE"], ctx)
     if _has(ctx, "cardiac_chest_pain"):
         return _result(2, "Level 2 assigned for potentially dangerous chest pain.", "hard_override", ["L2_CHEST_PAIN"], ctx)
     if _has(ctx, "respiratory_distress"):
@@ -668,6 +687,10 @@ def _uncertainty_escalation(ctx: SafetyContext) -> Optional[RuleResult]:
     matched_medium_risk = sorted(category for category in ctx.matched_categories if category in MEDIUM_RISK_CATEGORIES)
     concerning_parse = bool(_find_phrase_matches(complaint, ["felt better now", "briefly", "resolved"], allow_fuzzy=False))
 
+    if ctx.critical_flags.get("semantic_loc"):
+        return _result(2, "Level 2 assigned because semantic loss-of-consciousness wording is never safely low risk.", "uncertainty_escalation", ["UNC_SEMANTIC_LOC"], ctx)
+    if ctx.critical_flags.get("semantic_stroke"):
+        return _result(2, "Level 2 assigned because semantic transient neurologic symptoms remain high risk.", "uncertainty_escalation", ["UNC_SEMANTIC_STROKE"], ctx)
     if _find_phrase_matches(complaint, ["loss of consciousness", "blackout", "fainted"], allow_fuzzy=True) and concerning_parse:
         return _result(2, "Level 2 assigned because a transient severe symptom still carries serious risk.", "uncertainty_escalation", ["UNC_TRANSIENT_HIGH_RISK"], ctx)
     if len(matched_medium_risk) >= 2:

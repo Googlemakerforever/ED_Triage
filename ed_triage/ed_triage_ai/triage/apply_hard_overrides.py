@@ -17,10 +17,14 @@ def _result(level: int, reason: str, rule_id: str) -> RuleDict:
 def evaluate_level1_rules(payload: Dict[str, Any], extracted: Dict[str, Any], derived: Dict[str, Any]) -> Optional[RuleDict]:
     f = extracted["features"]
     complaint = str(payload.get("chief_complaint", "")).lower()
+    critical_flags = extracted.get("context", {}).get("critical_flags", {})
     spo2 = float(payload.get("oxygen_saturation", 100) or 100)
     sbp = float(payload.get("systolic_bp", 120) or 120)
     rr = float(payload.get("respiratory_rate", 16) or 16)
 
+    # Safety-critical semantic checks do not depend on extractor confidence.
+    if critical_flags.get("semantic_airway_compromise"):
+        return _result(1, "Immediate life threat due to semantic airway-compromise detection.", "L1_SEMANTIC_AIRWAY")
     if "not breathing" in complaint or "apnea" in complaint:
         return _result(1, "Immediate life threat due to absent breathing.", "L1_APNEA")
     if "no pulse" in complaint or "pulseless" in complaint:
@@ -39,6 +43,8 @@ def evaluate_level1_rules(payload: Dict[str, Any], extracted: Dict[str, Any], de
         return _result(1, "Immediate life threat due to severe bleeding.", "L1_MASSIVE_BLEEDING")
     if f.get("active_seizure"):
         return _result(1, "Immediate life threat due to ongoing seizure without recovery.", "L1_ACTIVE_SEIZURE")
+    if critical_flags.get("semantic_severe_trauma") and any([spo2 < THRESHOLDS["critical_spo2"], sbp < THRESHOLDS["critical_sbp"], rr > THRESHOLDS["critical_rr"]]):
+        return _result(1, "Immediate life threat due to semantic severe trauma with instability.", "L1_SEMANTIC_TRAUMA_INSTABILITY")
     if derived.get("shock_index") is not None and derived["shock_index"] >= 1.3 and f.get("dangerous_mechanism"):
         return _result(1, "Immediate life threat due to trauma with profound instability.", "L1_TRAUMA_SHOCK")
     return None
@@ -47,11 +53,18 @@ def evaluate_level1_rules(payload: Dict[str, Any], extracted: Dict[str, Any], de
 def evaluate_level2_rules(payload: Dict[str, Any], extracted: Dict[str, Any], derived: Dict[str, Any]) -> Optional[RuleDict]:
     f = extracted["features"]
     complaint = str(payload.get("chief_complaint", "")).lower()
+    critical_flags = extracted.get("context", {}).get("critical_flags", {})
     spo2 = float(payload.get("oxygen_saturation", 100) or 100)
     sbp = float(payload.get("systolic_bp", 120) or 120)
     hr = float(payload.get("heart_rate", 80) or 80)
     rr = float(payload.get("respiratory_rate", 16) or 16)
 
+    if f.get("head_injury") and critical_flags.get("semantic_head_injury_red_flags"):
+        return _result(2, "Head injury with semantic red-flag cluster requires urgent evaluation.", "L2_SEMANTIC_HEAD_INJURY")
+    if critical_flags.get("semantic_loc"):
+        return _result(2, "Semantic loss-of-consciousness event requires urgent evaluation.", "L2_SEMANTIC_LOC")
+    if critical_flags.get("semantic_stroke"):
+        return _result(2, "Semantic stroke-like complaint requires urgent evaluation.", "L2_SEMANTIC_STROKE")
     if f.get("chest_pain"):
         return _result(2, "High-risk chest pain requires urgent evaluation.", "L2_CHEST_PAIN")
     if f.get("shortness_of_breath"):

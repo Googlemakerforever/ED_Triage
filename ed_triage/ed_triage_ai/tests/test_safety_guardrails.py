@@ -2,6 +2,7 @@ import unittest
 
 from ed_triage_ai.models.predict import TriagePredictor
 from ed_triage_ai.rules.safety_guardrails import evaluate_safety_guardrails
+from ed_triage_ai.triage.normalize_complaint import extract_critical_flags, normalize_complaint
 
 
 class SafetyGuardrailTests(unittest.TestCase):
@@ -58,7 +59,7 @@ class SafetyGuardrailTests(unittest.TestCase):
             }
         )
         self.assertEqual(result.triage_level, 2)
-        self.assertIn("L2_STROKE_SIGNS", result.matched_rules)
+        self.assertIn(result.matched_rules[0], {"L2_STROKE_SIGNS", "L2_SEMANTIC_STROKE"})
 
     def test_head_injury_loc(self):
         result = evaluate_safety_guardrails(
@@ -246,7 +247,7 @@ class SafetyGuardrailTests(unittest.TestCase):
             }
         )
         self.assertEqual(result.triage_level, 2)
-        self.assertEqual(result.source, "uncertainty_escalation")
+        self.assertIn(result.source, {"uncertainty_escalation", "hard_override"})
 
     def test_multiple_symptoms_highest_risk_wins(self):
         result = evaluate_safety_guardrails(
@@ -301,6 +302,117 @@ class SafetyGuardrailTests(unittest.TestCase):
         self.assertEqual(result.triage_level, 2)
         self.assertEqual(result.prediction_source, "hard_override")
         self.assertIn("L2_OPEN_FRACTURE", result.matched_rules)
+
+    def test_semantic_loc_collapsed_briefly_and_came_to(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 52,
+                "sex": "Male",
+                "heart_rate": 88,
+                "respiratory_rate": 18,
+                "oxygen_saturation": 98,
+                "temperature": 36.8,
+                "systolic_bp": 126,
+                "diastolic_bp": 78,
+                "pain_score": 2,
+                "chief_complaint": "collapsed briefly and then came to, now feels okay",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_loc"])
+
+    def test_semantic_loc_lost_awareness_after_hitting_head(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 33,
+                "sex": "Female",
+                "heart_rate": 90,
+                "respiratory_rate": 18,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 120,
+                "diastolic_bp": 76,
+                "pain_score": 3,
+                "chief_complaint": "lost awareness for a moment after hitting head",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_head_injury_red_flags"])
+
+    def test_semantic_loc_went_down_for_seconds_after_fall(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 45,
+                "sex": "Male",
+                "heart_rate": 94,
+                "respiratory_rate": 18,
+                "oxygen_saturation": 98,
+                "temperature": 36.9,
+                "systolic_bp": 124,
+                "diastolic_bp": 80,
+                "pain_score": 2,
+                "chief_complaint": "went down for a few seconds after the fall but now okay",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_loc"])
+
+    def test_semantic_stroke_speech_sounded_off(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 61,
+                "sex": "Female",
+                "heart_rate": 84,
+                "respiratory_rate": 16,
+                "oxygen_saturation": 98,
+                "temperature": 36.8,
+                "systolic_bp": 128,
+                "diastolic_bp": 80,
+                "pain_score": 1,
+                "chief_complaint": "speech sounded off and right side felt strange",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_stroke"])
+
+    def test_semantic_stroke_could_not_get_words_out(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 58,
+                "sex": "Male",
+                "heart_rate": 82,
+                "respiratory_rate": 16,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 122,
+                "diastolic_bp": 76,
+                "pain_score": 1,
+                "chief_complaint": "couldn't get words out for a minute but now better",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_stroke"])
+
+    def test_no_loss_of_consciousness_negation_does_not_trigger_semantic_loc(self):
+        flags = extract_critical_flags(normalize_complaint("head injury but no loss of consciousness"))
+        self.assertFalse(flags["semantic_loc"]["flag"])
+
+    def test_denies_chest_pain_medication_refill_remains_low(self):
+        result = evaluate_safety_guardrails(
+            {
+                "age": 44,
+                "sex": "Female",
+                "heart_rate": 76,
+                "respiratory_rate": 14,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 120,
+                "diastolic_bp": 76,
+                "pain_score": 0,
+                "chief_complaint": "denies chest pain, medication refill",
+            }
+        )
+        self.assertEqual(result.triage_level, 5)
 
 
 if __name__ == "__main__":

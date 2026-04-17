@@ -4,6 +4,7 @@
 - Added a new modular hybrid engine centered in [`hybrid_engine.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/hybrid_engine.py).
 - The engine now runs this order: validation -> normalization -> structured feature extraction -> hard overrides -> uncertainty floor -> ML prediction -> no-downgrade combiner -> audited output.
 - [`predict.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/models/predict.py) now uses that hybrid engine rather than letting the model decide first.
+- Added deterministic semantic critical-event detection in [`normalize_complaint.py`](/Users/vedangholay/Visual_studioJava/PingPong/ed_triage/ed_triage_ai/triage/normalize_complaint.py) with centralized phrase families in [`keyword_sets.py`](/Users/vedangholay/Visual_studioJava/PingPong/ed_triage/ed_triage_ai/triage/keyword_sets.py).
 
 ## Where GenAI is used
 - GenAI is only used in [`extract_structured_features.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/extract_structured_features.py).
@@ -15,6 +16,7 @@
 - Hard overrides live in [`apply_hard_overrides.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/apply_hard_overrides.py).
 - Uncertainty escalation and safety floors live in [`apply_uncertainty_escalation.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/apply_uncertainty_escalation.py).
 - These run before ML and can block low-acuity outputs.
+- Semantic critical flags are computed immediately after normalization and stored in the extracted feature context so hard overrides and uncertainty escalation can both use them.
 
 ## Where ML is used
 - ML runs only for gray-zone cases in [`predict_acuity_ml.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/predict_acuity_ml.py).
@@ -24,6 +26,7 @@
 - [`combine_with_safety_floor.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/combine_with_safety_floor.py) prevents ML from lowering a higher-acuity deterministic rule or uncertainty floor.
 - Hard overrides always win.
 - If ML predicts a higher-acuity level than the floor, ML can escalate upward, but not downward.
+- Final audit output now includes `critical_flags`, `semantic_matches`, and `safety_floor_reason` so semantic escalations are visible even if a primary extractor missed them.
 
 ## How to extend safely
 - Add new aliases or synonyms in [`keyword_sets.py`](/Users/vedangholay/Visual_studioJava/PingPong/SnakeGame/ed_triage_ai/triage/keyword_sets.py).
