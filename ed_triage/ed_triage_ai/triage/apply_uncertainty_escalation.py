@@ -31,6 +31,13 @@ def compute_safety_floor(payload: Dict[str, Any], extracted: Dict[str, Any], der
             "matched_rules": ["UNC_SEMANTIC_STROKE"],
             "source": "uncertainty_escalation",
         }
+    if critical_flags.get("semantic_possible_stroke"):
+        return {
+            "level": 2,
+            "reason": "Possible focal neurologic symptoms are too risky for default Level 3 handling, so a conservative stroke floor is applied.",
+            "matched_rules": ["UNC_POSSIBLE_STROKE_PATTERN"],
+            "source": "uncertainty_escalation",
+        }
 
     concerning_features = [
         name
@@ -76,10 +83,10 @@ def compute_safety_floor(payload: Dict[str, Any], extracted: Dict[str, Any], der
             "source": "uncertainty_escalation",
         }
 
-    if ambiguity_flags and concerning_features:
+    if ambiguity_flags and (critical_flags.get("semantic_possible_stroke") or critical_flags.get("semantic_stroke")):
         return {
-            "level": 3,
-            "reason": "Ambiguous but potentially serious symptoms require a conservative floor.",
+            "level": 2,
+            "reason": "Ambiguous but potentially serious symptoms require a conservative stroke-safe floor.",
             "matched_rules": ["UNC_AMBIGUOUS_CONCERNING_TEXT"],
             "source": "uncertainty_escalation",
         }

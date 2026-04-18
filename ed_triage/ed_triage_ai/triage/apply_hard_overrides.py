@@ -52,7 +52,6 @@ def evaluate_level1_rules(payload: Dict[str, Any], extracted: Dict[str, Any], de
 
 def evaluate_level2_rules(payload: Dict[str, Any], extracted: Dict[str, Any], derived: Dict[str, Any]) -> Optional[RuleDict]:
     f = extracted["features"]
-    complaint = str(payload.get("chief_complaint", "")).lower()
     critical_flags = extracted.get("context", {}).get("critical_flags", {})
     spo2 = float(payload.get("oxygen_saturation", 100) or 100)
     sbp = float(payload.get("systolic_bp", 120) or 120)
@@ -64,7 +63,7 @@ def evaluate_level2_rules(payload: Dict[str, Any], extracted: Dict[str, Any], de
     if critical_flags.get("semantic_loc"):
         return _result(2, "Semantic loss-of-consciousness event requires urgent evaluation.", "L2_SEMANTIC_LOC")
     if critical_flags.get("semantic_stroke"):
-        return _result(2, "Semantic stroke-like complaint requires urgent evaluation.", "L2_SEMANTIC_STROKE")
+        return _result(2, "New focal neurologic symptoms are time-sensitive and require urgent stroke-level evaluation.", "L2_SEMANTIC_STROKE")
     if f.get("chest_pain"):
         return _result(2, "High-risk chest pain requires urgent evaluation.", "L2_CHEST_PAIN")
     if f.get("shortness_of_breath"):
@@ -106,6 +105,9 @@ def evaluate_level3_rules(payload: Dict[str, Any], extracted: Dict[str, Any], de
     f = extracted["features"]
     pain = float(payload.get("pain_score", 0) or 0)
     complaint = str(payload.get("chief_complaint", "")).lower()
+    critical_flags = extracted.get("context", {}).get("critical_flags", {})
+    if critical_flags.get("semantic_migraine_pattern") and not critical_flags.get("semantic_stroke") and not critical_flags.get("semantic_possible_stroke"):
+        return _result(3, "Classic recurrent migraine pattern without focal neurologic deficit should not auto-escalate to stroke acuity.", "L3_CLASSIC_MIGRAINE")
     if f.get("possible_fracture"):
         return _result(3, "Possible stable fracture likely needs multiple resources.", "L3_POSSIBLE_FRACTURE")
     if f.get("deformity"):

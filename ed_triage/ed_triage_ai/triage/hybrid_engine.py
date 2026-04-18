@@ -69,8 +69,22 @@ class HybridTriageEngine:
 
         ml_level = None
         ml_probabilities = {}
+        binary_result = {}
         if hard_override is None:
-            ml_level, ml_probabilities = predict_acuity_ml(self.model, patient, normalized)
+            ml_level, ml_probabilities, binary_result = predict_acuity_ml(self.model, patient, normalized)
+            if critical_flags.get("semantic_migraine_pattern") and not critical_flags.get("semantic_stroke") and not critical_flags.get("semantic_possible_stroke"):
+                binary_result["high_acuity_score"] = min(float(binary_result["high_acuity_score"]), 0.05)
+                binary_result["high_acuity_pred"] = 0
+            high_acuity_score = float(binary_result["high_acuity_score"])
+            high_acuity_pred = int(binary_result["high_acuity_pred"])
+            print("ML high_acuity_score:", high_acuity_score)
+            if high_acuity_pred == 1:
+                # Lower triage numbers are higher acuity, so escalate to at least Level 2.
+                ml_level = min(int(ml_level), 2)
 
         final_decision = combine_with_safety_floor(hard_override, safety_floor, ml_level, ml_probabilities)
+        if binary_result:
+            final_decision["high_acuity_score"] = float(binary_result["high_acuity_score"])
+            final_decision["high_acuity_pred"] = int(binary_result["high_acuity_pred"])
+            final_decision["high_acuity_threshold"] = float(binary_result["threshold"])
         return finalize_decision(final_decision, normalized, abnormal_vitals, extracted, derived)

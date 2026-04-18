@@ -94,6 +94,14 @@ def _semantic_hits(text: str, family: str, *, allow_fuzzy: bool = True) -> List[
     return find_phrase_matches(text, SEMANTIC_PHRASE_FAMILIES[family], allow_fuzzy=allow_fuzzy)
 
 
+def detect_semantic_migraine_pattern(text: str) -> Tuple[bool, List[str]]:
+    core_hits = _semantic_hits(text, "migraine_core")
+    support_hits = _semantic_hits(text, "migraine_support")
+    if core_hits and support_hits:
+        return True, sorted(set(core_hits + support_hits))
+    return False, []
+
+
 def detect_semantic_loc(text: str) -> Tuple[bool, List[str]]:
     core_hits = _semantic_hits(text, "loc_core")
     support_hits = _semantic_hits(text, "loc_support")
@@ -106,15 +114,61 @@ def detect_semantic_loc(text: str) -> Tuple[bool, List[str]]:
     return False, []
 
 
+def detect_possible_semantic_stroke(text: str) -> Tuple[bool, List[str]]:
+    speech_hits = _semantic_hits(text, "stroke_core")
+    unilateral_hits = _semantic_hits(text, "stroke_unilateral")
+    face_hits = _semantic_hits(text, "stroke_face")
+    vision_hits = _semantic_hits(text, "stroke_vision")
+    balance_hits = _semantic_hits(text, "stroke_balance")
+    possible_hits = _semantic_hits(text, "stroke_possible")
+    onset_hits = _semantic_hits(text, "stroke_onset", allow_fuzzy=False)
+    migraine_flag, _ = detect_semantic_migraine_pattern(text)
+
+    if face_hits or unilateral_hits:
+        return True, sorted(set(face_hits + unilateral_hits))
+    if speech_hits or vision_hits:
+        return True, sorted(set(speech_hits + vision_hits + onset_hits))
+    if balance_hits and onset_hits:
+        return True, sorted(set(balance_hits + onset_hits))
+    if migraine_flag:
+        return False, []
+    if possible_hits:
+        return True, sorted(set(possible_hits + onset_hits))
+    return False, []
+
+
 def detect_semantic_stroke(text: str) -> Tuple[bool, List[str]]:
-    core_hits = _semantic_hits(text, "stroke_core")
+    speech_hits = _semantic_hits(text, "stroke_core")
+    strong_speech_hits = _semantic_hits(text, "stroke_strong_speech")
     support_hits = _semantic_hits(text, "stroke_support")
-    if core_hits:
-        return True, sorted(set(core_hits + support_hits))
+    unilateral_hits = _semantic_hits(text, "stroke_unilateral")
+    face_hits = _semantic_hits(text, "stroke_face")
+    vision_hits = _semantic_hits(text, "stroke_vision")
+    balance_hits = _semantic_hits(text, "stroke_balance")
+    onset_hits = _semantic_hits(text, "stroke_onset", allow_fuzzy=False)
+    migraine_flag, migraine_hits = detect_semantic_migraine_pattern(text)
+
+    focal_hits = sorted(set(speech_hits + support_hits + unilateral_hits + face_hits + vision_hits + balance_hits))
+    if migraine_flag and not (face_hits or unilateral_hits or (speech_hits and unilateral_hits) or (vision_hits and onset_hits) or (balance_hits and onset_hits)):
+        return False, migraine_hits
+    if strong_speech_hits:
+        return True, sorted(set(strong_speech_hits + support_hits + onset_hits))
+    if face_hits:
+        return True, sorted(set(face_hits + onset_hits))
+    if unilateral_hits:
+        return True, sorted(set(unilateral_hits + speech_hits + onset_hits))
+    if speech_hits and support_hits:
+        return True, sorted(set(speech_hits + support_hits + onset_hits))
+    if vision_hits and onset_hits:
+        return True, sorted(set(vision_hits + onset_hits))
+    if balance_hits and onset_hits:
+        return True, sorted(set(balance_hits + onset_hits))
     if len(support_hits) >= 2:
-        return True, sorted(set(support_hits))
+        return True, sorted(set(support_hits + onset_hits))
     if support_hits and find_phrase_matches(text, ["speech difficulty", "slurred speech"], allow_fuzzy=True):
-        return True, sorted(set(support_hits + ["speech difficulty"]))
+        return True, sorted(set(support_hits + ["speech difficulty"] + onset_hits))
+    if "clumsy on one side" in focal_hits or "one sided clumsiness" in focal_hits:
+        return True, focal_hits
     return False, []
 
 
@@ -140,12 +194,16 @@ def detect_semantic_severe_trauma(text: str) -> Tuple[bool, List[str]]:
 def extract_critical_flags(text: str) -> Dict[str, Dict[str, object]]:
     loc_flag, loc_hits = detect_semantic_loc(text)
     stroke_flag, stroke_hits = detect_semantic_stroke(text)
+    possible_stroke_flag, possible_stroke_hits = detect_possible_semantic_stroke(text)
     head_flag, head_hits = detect_semantic_head_injury_red_flags(text)
     airway_flag, airway_hits = detect_semantic_airway_compromise(text)
     trauma_flag, trauma_hits = detect_semantic_severe_trauma(text)
+    migraine_flag, migraine_hits = detect_semantic_migraine_pattern(text)
     return {
         "semantic_loc": {"flag": loc_flag, "matches": loc_hits},
         "semantic_stroke": {"flag": stroke_flag, "matches": stroke_hits},
+        "semantic_possible_stroke": {"flag": possible_stroke_flag and not stroke_flag, "matches": possible_stroke_hits if not stroke_flag else []},
+        "semantic_migraine_pattern": {"flag": migraine_flag, "matches": migraine_hits},
         "semantic_head_injury_red_flags": {"flag": head_flag, "matches": head_hits},
         "semantic_airway_compromise": {"flag": airway_flag, "matches": airway_hits},
         "semantic_severe_trauma": {"flag": trauma_flag, "matches": trauma_hits},

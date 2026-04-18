@@ -3,6 +3,10 @@ import unittest
 from ed_triage_ai.models.predict import TriagePredictor
 from ed_triage_ai.triage.hybrid_engine import HybridTriageEngine
 from ed_triage_ai.triage.normalize_complaint import extract_critical_flags, normalize_complaint
+from ed_triage_ai.triage.predict_acuity_ml import (
+    build_runtime_features_for_binary_model,
+    score_high_acuity_binary,
+)
 
 
 class FailingExtractor:
@@ -261,6 +265,162 @@ class HybridEngineTests(unittest.TestCase):
         )
         self.assertIn(result.triage_level, {4, 5})
         self.assertFalse(result.audit["critical_flags"].get("semantic_stroke"))
+
+    def test_binary_high_acuity_score_is_high_for_fall_with_loc(self):
+        complaint = "fell down stairs, hit head, briefly passed out"
+        runtime_features = build_runtime_features_for_binary_model(
+            {
+                "age": 54,
+                "sex": "Male",
+                "heart_rate": 96,
+                "respiratory_rate": 20,
+                "oxygen_saturation": 98,
+                "temperature": 36.9,
+                "systolic_bp": 124,
+                "diastolic_bp": 78,
+                "pain_score": 6,
+                "chief_complaint": complaint,
+            },
+            normalize_complaint(complaint),
+        )
+        binary_result = score_high_acuity_binary(runtime_features)
+        self.assertGreater(binary_result["high_acuity_score"], 0.5)
+        self.assertEqual(binary_result["high_acuity_pred"], 1)
+
+    def test_binary_high_acuity_score_is_low_for_medication_refill(self):
+        complaint = "medication refill"
+        runtime_features = build_runtime_features_for_binary_model(
+            {
+                "age": 44,
+                "sex": "Female",
+                "heart_rate": 76,
+                "respiratory_rate": 14,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 120,
+                "diastolic_bp": 76,
+                "pain_score": 0,
+                "chief_complaint": complaint,
+            },
+            normalize_complaint(complaint),
+        )
+        binary_result = score_high_acuity_binary(runtime_features)
+        self.assertLess(binary_result["high_acuity_score"], 0.5)
+        self.assertEqual(binary_result["high_acuity_pred"], 0)
+
+    def test_stroke_semantic_headache_one_eye_blurry_with_arm_weakness(self):
+        result = self.predictor.predict(
+            {
+                "age": 47,
+                "sex": "Female",
+                "heart_rate": 82,
+                "respiratory_rate": 16,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 126,
+                "diastolic_bp": 78,
+                "pain_score": 6,
+                "chief_complaint": "sudden headache and blurry vision in one eye, right arm feels weak",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_stroke"])
+
+    def test_stroke_semantic_slight_slurring_and_left_sided_clumsiness(self):
+        result = self.predictor.predict(
+            {
+                "age": 52,
+                "sex": "Male",
+                "heart_rate": 80,
+                "respiratory_rate": 16,
+                "oxygen_saturation": 98,
+                "temperature": 36.9,
+                "systolic_bp": 128,
+                "diastolic_bp": 80,
+                "pain_score": 2,
+                "chief_complaint": "slight slurring of speech and feels clumsy on left side",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(
+            result.audit["critical_flags"]["semantic_stroke"]
+            or result.audit["critical_flags"]["semantic_possible_stroke"]
+        )
+
+    def test_stroke_semantic_sudden_dizziness_and_trouble_walking_straight(self):
+        result = self.predictor.predict(
+            {
+                "age": 63,
+                "sex": "Male",
+                "heart_rate": 84,
+                "respiratory_rate": 16,
+                "oxygen_saturation": 98,
+                "temperature": 36.7,
+                "systolic_bp": 132,
+                "diastolic_bp": 82,
+                "pain_score": 1,
+                "chief_complaint": "sudden dizziness and trouble walking straight",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(
+            result.audit["critical_flags"]["semantic_stroke"]
+            or result.audit["critical_flags"]["semantic_possible_stroke"]
+        )
+
+    def test_classic_recurrent_migraine_pattern_not_level_two(self):
+        result = self.predictor.predict(
+            {
+                "age": 31,
+                "sex": "Female",
+                "heart_rate": 78,
+                "respiratory_rate": 14,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 118,
+                "diastolic_bp": 74,
+                "pain_score": 7,
+                "chief_complaint": "severe throbbing headache with light sensitivity and nausea, similar to past migraines",
+            }
+        )
+        self.assertNotEqual(result.triage_level, 2)
+        self.assertFalse(result.audit["critical_flags"]["semantic_stroke"])
+
+    def test_typical_migraine_aura_pattern_not_level_two(self):
+        result = self.predictor.predict(
+            {
+                "age": 28,
+                "sex": "Female",
+                "heart_rate": 74,
+                "respiratory_rate": 14,
+                "oxygen_saturation": 99,
+                "temperature": 36.7,
+                "systolic_bp": 116,
+                "diastolic_bp": 72,
+                "pain_score": 5,
+                "chief_complaint": "zigzag lines in vision followed by headache, happens before migraines",
+            }
+        )
+        self.assertNotEqual(result.triage_level, 2)
+        self.assertFalse(result.audit["critical_flags"]["semantic_stroke"])
+
+    def test_migraine_with_new_one_sided_weakness_is_level_two(self):
+        result = self.predictor.predict(
+            {
+                "age": 39,
+                "sex": "Female",
+                "heart_rate": 80,
+                "respiratory_rate": 15,
+                "oxygen_saturation": 99,
+                "temperature": 36.8,
+                "systolic_bp": 120,
+                "diastolic_bp": 76,
+                "pain_score": 6,
+                "chief_complaint": "migraine with new one-sided weakness",
+            }
+        )
+        self.assertEqual(result.triage_level, 2)
+        self.assertTrue(result.audit["critical_flags"]["semantic_stroke"])
 
 
 if __name__ == "__main__":
