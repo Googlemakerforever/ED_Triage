@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import json
 from typing import Any, Dict, Tuple
 
@@ -15,11 +16,6 @@ from ed_triage_ai.utils.config import ARTIFACT_DIR
 
 BINARY_MODEL_PATH = ARTIFACT_DIR / "nhamcs_binary_xgb.joblib"
 BINARY_METADATA_PATH = ARTIFACT_DIR / "nhamcs_binary_xgb_metadata.json"
-
-_binary_model = joblib.load(BINARY_MODEL_PATH)
-_binary_metadata = json.loads(BINARY_METADATA_PATH.read_text(encoding="utf-8"))
-_binary_feature_list = _binary_metadata["feature_list"]
-_high_acuity_threshold = float(_binary_metadata["threshold_used"])
 _LOW_RESOURCE_COMPLAINT_MARKERS = (
     "medication refill",
     "prescription refill",
@@ -28,6 +24,20 @@ _LOW_RESOURCE_COMPLAINT_MARKERS = (
     "work note",
     "recheck only",
 )
+
+
+@lru_cache(maxsize=1)
+def get_binary_model_bundle() -> Tuple[Any, Dict[str, Any], list[str], float | None]:
+    try:
+        metadata = json.loads(BINARY_METADATA_PATH.read_text(encoding="utf-8"))
+        model = joblib.load(BINARY_MODEL_PATH)
+        feature_list = list(metadata["feature_list"])
+        threshold = float(metadata["threshold_used"])
+        print(f"Loaded NHAMCS binary model from {BINARY_MODEL_PATH}")
+        return model, metadata, feature_list, threshold
+    except Exception as exc:
+        print(f"Warning: NHAMCS binary model unavailable, using fallback mode: {exc}")
+        return None, {}, [], None
 
 
 def _align_features_for_model(model: Any, enriched: pd.DataFrame) -> pd.DataFrame:
@@ -144,10 +154,20 @@ def build_runtime_features_for_binary_model(patient: Dict[str, Any], normalized_
 
 
 def score_high_acuity_binary(features: Dict[str, Any]) -> Dict[str, Any]:
-    input_frame = pd.DataFrame([features])
-    input_frame = input_frame.reindex(columns=_binary_feature_list)
+    model, _metadata, feature_list, threshold = get_binary_model_bundle()
+    if model is None or threshold is None or not feature_list:
+        print("Using NHAMCS binary fallback result.")
+        return {
+            "high_acuity_score": 0.0,
+            "high_acuity_pred": 0,
+            "threshold": None,
+            "model_available": False,
+        }
 
-    prob = float(_binary_model.predict_proba(input_frame)[0, 1])
+    input_frame = pd.DataFrame([features])
+    input_frame = input_frame.reindex(columns=feature_list)
+
+    prob = float(model.predict_proba(input_frame)[0, 1])
     complaint = str(features.get("chief_complaint", "") or "").lower()
     is_low_resource_case = any(marker in complaint for marker in _LOW_RESOURCE_COMPLAINT_MARKERS)
     vitals_stable = (
@@ -161,12 +181,13 @@ def score_high_acuity_binary(features: Dict[str, Any]) -> Dict[str, Any]:
     )
     if is_low_resource_case and vitals_stable:
         prob = min(prob, 0.05)
-    pred = int(prob >= _high_acuity_threshold)
+    pred = int(prob >= threshold)
 
     return {
         "high_acuity_score": prob,
         "high_acuity_pred": pred,
-        "threshold": _high_acuity_threshold,
+        "threshold": threshold,
+        "model_available": True,
     }
 
 
