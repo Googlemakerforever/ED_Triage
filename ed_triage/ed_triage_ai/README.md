@@ -155,6 +155,30 @@ The root [`requirements.txt`](/Users/vedangholay/Visual_studioJava/PingPong/Snak
 
 If you need a non-Streamlit host later, Render is the next-best option because it can run the current app as a long-lived web process. Vercel is not a good fit for this architecture.
 
+## NHAMCS Binary Model Note
+
+Streamlit Community Cloud currently runs Python 3.14.x, and this app should use `scikit-learn==1.8.0` for deployment compatibility. Older `scikit-learn 1.6.1`-trained `joblib` artifacts are not deployment-safe on Python 3.14 because they can fail to install cleanly or emit persistence-version mismatch warnings at runtime.
+
+When the sklearn runtime major/minor version changes, retrain and resave the NHAMCS binary artifact with the matching runtime before deploying. The current runtime artifacts are:
+
+- `ed_triage_ai/artifacts/nhamcs_binary_xgb.joblib`
+- `ed_triage_ai/artifacts/nhamcs_binary_xgb_metadata.json`
+
+Recommended local retraining command with the 1.8.0 environment:
+
+```bash
+cd /Users/vedangholay/your_project
+. .venv/bin/activate
+python3 scripts/nhamcs_pipeline.py binary-train
+```
+
+After retraining, copy the fresh artifacts into the app runtime directory:
+
+```bash
+cp /Users/vedangholay/your_project/artifacts/nhamcs_binary_xgb.joblib /Users/vedangholay/Visual_studioJava/PingPong/ed_triage/ed_triage_ai/artifacts/nhamcs_binary_xgb.joblib
+cp /Users/vedangholay/your_project/artifacts/nhamcs_binary_xgb_metadata.json /Users/vedangholay/Visual_studioJava/PingPong/ed_triage/ed_triage_ai/artifacts/nhamcs_binary_xgb_metadata.json
+```
+
 ## Prediction Output
 
 Each inference returns:
