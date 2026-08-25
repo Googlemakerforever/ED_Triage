@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --ink: #132033;
+  --muted: #61718a;
+}
+
+body {
+  background: radial-gradient(circle at top right, #e9f2ff 0%, var(--bg) 35%, #f8fafc 100%);
+  color: var(--ink);
+}
+
+.card-surface {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-soft;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+}

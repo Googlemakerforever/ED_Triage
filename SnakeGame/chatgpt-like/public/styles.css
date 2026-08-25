@@ -1,0 +1,73 @@
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --accent: #1d4ed8;
+  --user: #dbeafe;
+  --assistant: #ecfeff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #e0f2fe, var(--bg));
+  color: var(--ink);
+}
+
+.app {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+header h1 { margin: 0 0 8px; }
+header p { margin: 0 0 16px; color: var(--muted); }
+
+.chat {
+  background: var(--panel);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  height: 65vh;
+  overflow-y: auto;
+}
+
+.msg {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.msg.user { background: var(--user); }
+.msg.assistant { background: var(--assistant); }
+.msg.error { background: #fee2e2; color: #991b1b; }
+
+.composer {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  resize: vertical;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 0 20px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.6; cursor: not-allowed; }

@@ -39,7 +39,7 @@ public class PongGame extends GDV5 {
      * Constructs a PongGame instance and initializes game objects.
      */
     public PongGame() {
-        super(60); // 60 FPS
+        super(100); // 60 FPS
         setTitle("Two Player Pong");
         initializeGame();
     }

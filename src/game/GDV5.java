@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
@@ -30,15 +31,17 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
     private int framesPerSecond;
     public static boolean[] KeysPressed;
     // default window sizes
-    private static int MAX_WINDOW_X = 1200;
-    private static int MAX_WINDOW_Y = 800;
-    private static int PADDING = 2;
+    private static int MAX_WINDOW_X = 650;
+    private static int MAX_WINDOW_Y = 750;
+    private static int PADDING = 1;
     // it is your responsibility to handle the release on keysTyped
     public static boolean[] KeysTyped;
 
     private JFrame frame;
     private String title = "Pong";
     private boolean cleanCanvas = true;
+    private volatile boolean running = false;
+    private Thread gameThread;
 
     /**
      *
@@ -55,14 +58,19 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
     }
 
     public GDV5() {
-        this(60); // default setting (60 frames per second)
+        this(100); // default setting
     }
 
     public void start() {
+        if (running) {
+            return;
+        }
+
         // ensure canvas has a size
         if (this.getWidth() == 0 || this.getHeight() == 0) {
             this.setPreferredSize(new Dimension(MAX_WINDOW_X, MAX_WINDOW_Y));
         }
+
         frame = new JFrame();
         frame.add(this);
         frame.pack();
@@ -75,8 +83,12 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
     }
 
     private synchronized void startThread() {
-        Thread t1 = new Thread(this);
-        t1.start(); // calls run method after paint
+        if (running) {
+            return;
+        }
+        running = true;
+        gameThread = new Thread(this, "gdv5-game-loop");
+        gameThread.start(); // calls run method after paint
         this.setFocusable(true);
         this.requestFocus();
     }
@@ -111,24 +123,30 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
         // correct conversion: nanoseconds per frame
         double nanoSecondConversion = 1_000_000_000.0 / (double) this.framesPerSecond;
         double changeInSeconds = 0;
-        while (true) {
+
+        while (running) {
             long now = System.nanoTime();
             changeInSeconds += (now - lastTime) / nanoSecondConversion;
-            // update while enough time has passed for a frame
+
+            boolean updated = false;
             while (changeInSeconds >= 1) {
                 update();
                 changeInSeconds--;
+                updated = true;
             }
-            render();
+
+            if (updated) {
+                render();
+            } else {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    running = false;
+                }
+            }
+
             lastTime = now;
-            // optional small sleep to be nice to CPU (uncomment if desired)
-            /*
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            */
         }
     }
 
@@ -185,7 +203,8 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
         } else if (previousXPos + width <= stationary.getX() && projectile.getX() + width >= stationary.getX()) {
             // intersects from left
             result = 2;
-        } else if (previousYPos >= stationary.getY() + stationary.height && projectile.getY() <= stationary.getY() + stationary.height) {
+        } else if (previousYPos >= stationary.getY() + stationary.height
+                && projectile.getY() <= stationary.getY() + stationary.height) {
             // intersects from bottom
             result = 3;
         } else {
@@ -233,5 +252,17 @@ public abstract class GDV5 extends Canvas implements Runnable, KeyListener {
 
     public static void setPadding(int paddingVal) {
         PADDING = paddingVal;
+    }
+
+    public void dispose() {
+        running = false;
+        if (gameThread != null) {
+            gameThread.interrupt();
+            gameThread = null;
+        }
+        if (frame != null) {
+            frame.dispose();
+            frame = null;
+        }
     }
 }

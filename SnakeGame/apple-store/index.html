@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orchard Cart | Premium Apples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar">
+        <h1>Orchard Cart</h1>
+        <button id="cart-button" class="cart-button" aria-label="Open cart">
+          Cart <span id="cart-count">0</span>
+        </button>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">Fresh Harvest Delivered</p>
+        <h2>Shop farm-picked apples in minutes.</h2>
+        <p>
+          Crisp varieties, gift boxes, and bulk packs from trusted orchards across the country.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="controls" aria-label="Product controls">
+        <input id="search" type="search" placeholder="Search apples..." aria-label="Search apples" />
+        <select id="sort" aria-label="Sort products">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Top Rated</option>
+        </select>
+        <select id="category" aria-label="Filter category">
+          <option value="all">All Types</option>
+          <option value="snacking">Snacking</option>
+          <option value="baking">Baking</option>
+          <option value="gift">Gift Boxes</option>
+        </select>
+      </section>
+
+      <section>
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button id="close-cart" aria-label="Close cart">Close</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="promo-row">
+        <input id="promo" type="text" placeholder="Promo code" aria-label="Promo code" />
+        <button id="apply-promo">Apply</button>
+      </div>
+      <div class="totals" id="totals"></div>
+      <button id="checkout" class="checkout-btn">Checkout</button>
+    </aside>
+
+    <div id="overlay" class="overlay" hidden></div>
+
+    <dialog id="checkout-dialog">
+      <form id="checkout-form">
+        <h3>Checkout</h3>
+        <label>
+          Full Name
+          <input name="name" required minlength="2" />
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" required />
+        </label>
+        <label>
+          Address
+          <input name="address" required minlength="5" />
+        </label>
+        <label>
+          Card Number
+          <input name="card" required pattern="[0-9]{16}" placeholder="16 digits" />
+        </label>
+        <div class="dialog-actions">
+          <button type="button" id="cancel-checkout">Cancel</button>
+          <button type="submit">Place Order</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="success-dialog">
+      <h3>Order placed</h3>
+      <p id="order-summary"></p>
+      <button id="close-success">Continue Shopping</button>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
